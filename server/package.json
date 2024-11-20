@@ -15,5 +15,25 @@
   "bugs": {
     "url": "https://github.com/jadogeri/ManVersusPredatorGame/issues"
   },
-  "homepage": "https://github.com/jadogeri/ManVersusPredatorGame#readme"
+  "homepage": "https://github.com/jadogeri/ManVersusPredatorGame#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "email-templates": "^2.7.1",
+    "express": "^4.21.1",
+    "express-async-handler": "^1.2.0",
+    "handlebars": "^4.7.8",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.9.0",
+    "mongoose": "^5.11.15",
+    "nanoid": "^3.3.4",
+    "nodemailer": "^6.9.14",
+    "nodemailer-juice": "^1.0.1",
+    "nodemon": "^3.1.7",
+    "path": "^0.12.7",
+    "twilio": "^5.3.5"
+  }
 }

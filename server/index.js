@@ -21,6 +21,8 @@ app.use(bodyParser.json())
 
 app.use("/api/user", require("./src/routes/userRoutes"));
  app.use("/api/auth", require("./src/routes/authRoutes"));
+ app.use("/api/admin", require("./src/routes/adminRoutes"));
+
 
 app.use(errorHandler);
 dbConnection();

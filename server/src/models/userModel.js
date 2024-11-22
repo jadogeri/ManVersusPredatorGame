@@ -1,3 +1,4 @@
+const { Timestamp } = require('mongodb');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -16,6 +17,16 @@ const userSchema = new Schema({
     required: [true, "Please add the user password"],
 
   },
+  history:{
+    type : [
+      {
+        name : String,
+        verdict : String,
+        date : String
+      }
+    ] , 
+    "default" : []
+  }
 },
 {
   timestamps: true,

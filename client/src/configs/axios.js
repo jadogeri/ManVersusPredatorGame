@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:4000/api";
+const baseURL = process.env.BASE_URL;
 //const baseURL = "http://localhost:4000/api/opao"
 
 const headers ={

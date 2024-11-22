@@ -6,7 +6,7 @@ const User = require("../../models/userModel");
 //@route POST /api/user/register
 //@access public
 const registerUser = asyncHandler(async (req, res) => {
-  try{
+
   console.log("called register")
   const { username, email, password } = req.body;
   if (!username || !email || !password) {
@@ -41,9 +41,7 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("User data is not valid");
   }
-}catch(e){
-  console.log(e)
-}
+
   
 });
 

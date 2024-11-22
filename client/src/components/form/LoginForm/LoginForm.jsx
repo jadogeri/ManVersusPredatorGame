@@ -3,6 +3,7 @@ import {useLocation, useNavigate } from 'react-router-dom'
 import FormFieldInput from '../../input/FormFieldInput';
 import { useLoginMutation } from '../../../redux/api/user'
 import { handleNavClickDelay } from "../../../handleNavClickDelay";
+import "./styles.css"
 
 
 
@@ -66,7 +67,7 @@ login({email : email ,password: password})
 
 
     return (
-      <div>
+      <div className='container' style={{backgroundColor:"blue"}}>
         <div className="text-center py-4">
           <h1 className="text-7xl font-semibold">Login</h1>
           <p className="font-light text-lg">

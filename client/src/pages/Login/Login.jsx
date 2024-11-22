@@ -11,7 +11,8 @@ export const Login = () => {
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <div  className="px-4 max-w-7xl mx-auto lg:space-x-20 flex justify-center items-center h-screen" style={{backgroundColor:"green"}}>
+    <div className="max-w" style={{backgroundColor:"#28282B", marginTop:10, maginBottom:50}}>
+    <div  className="px-4 max-w-7xl h-7xl mx-auto lg:space-x-20 flex justify-center items-center h-screen" style={{backgroundColor:"green"}}>
       <div className="lg:w-[40%]">
 {/* <UserData /> */}
 
@@ -25,6 +26,7 @@ export const Login = () => {
       </div>
 
     
+    </div>
     </div>
   );
 };

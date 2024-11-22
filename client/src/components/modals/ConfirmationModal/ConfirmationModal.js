@@ -9,7 +9,7 @@ const ConfirmationModal = (props) => {
     <section className="modal-content animate"  style={{marginTop:290}}>   
         <div className="imgcontainer">      
             <span onClick={()=>closeModal(props.id)} className="close">&times;</span>            
-            <img src={require("../../../assets/logo.jpg")} alt="Avatar" className="avatar"/>
+            <img src={require("../../../assets//villainImages/PredatorHome.jpg")} alt="Avatar" className="avatar"/>
         </div>
         <h2>{props.header}</h2>
         <p>{props.message}</p>

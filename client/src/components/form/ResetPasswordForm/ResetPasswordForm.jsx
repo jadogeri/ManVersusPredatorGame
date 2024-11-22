@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react'
 import InputField from '../../input/FormFieldInput';
-import img from "../../../assets/food_pics/food1.jpg"
+import img from "../../../assets/villainImages/PredatorHome.jpg"
 import { handleNavClickDelay } from '../../../handleNavClickDelay';
 import UserData from '../../../components/UserData';
 import { Link, useLocation, useNavigate } from 'react-router-dom'

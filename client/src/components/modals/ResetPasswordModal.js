@@ -13,7 +13,7 @@ const ResetPasswordModal = (props) => {
     <div className="imgcontainer">
     <span onClick={()=>closeModal(props.id)} className="close" style={{color:"red",fontSize:30,alignSelf:"center",justifyContent:"center", cursor:"pointer"}}>&times;</span>            
 
-      <img src={require("../../assets/logo.jpg")} alt="Avatar" className="avatar" style={{height :200,width:200}}/>
+      <img src={require("../../assets/villainImages/PredatorHome.jpg")} alt="Avatar" className="avatar" style={{height :200,width:200}}/>
     </div>
     <h2>Password Change </h2>
     <p>Successful , password has been changed

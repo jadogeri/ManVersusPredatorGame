@@ -2,16 +2,17 @@ import React, {useRef, useState} from 'react'
 import InputField from '../../input/FormFieldInput';
 import img from "../../../assets/villainImages/PredatorHome.jpg"
 import { handleNavClickDelay } from '../../../handleNavClickDelay';
-import UserData from '../../../components/UserData';
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useResetPasswordMutation } from '../../../redux/api/user';
 import ResetPasswordModal from '../../modals/ResetPasswordModal';
+import {  useDispatch } from "react-redux";
+import { setError } from '../../../redux/feature/session/sessionSlice';
+import "./styles.css"
 import {openModal} from "../../../utils/htmlUtil/openModal"
 
 const ResetPasswordForm = () => {
   const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate();
- // const navDelay = (route) => { setTimeout(navigate(route), 5000);
 
  const resetPasswordFormRef = useRef("");
   
@@ -19,11 +20,8 @@ const ResetPasswordForm = () => {
   const [email, setEmail] = useState(location.state?.email ? location.state.email : ""  );
 
   const [resetPassword] = useResetPasswordMutation();
-  const [usernameNullError, setUsernameNullError] = useState(false)
-  const [passwordNullError, setPasswordNullError] = useState(false)
-  const [newPasswordNullError, setNewPasswordNullError] = useState(false)
-  const [confirmPasswordNullError, setConfirmPasswordNullError] = useState(false)
   const [resData, setResdata] = useState("")
+  const dispatch = useDispatch();
 
 
 
@@ -31,37 +29,27 @@ const ResetPasswordForm = () => {
   const onChangeEmailHandler=(e)=>{
     e.preventDefault();
     setEmail(e.target.value);
-    // let isValid = isValidInput(e.target.value)
-    // console.log("valid username === " ,isValid)
-    // setUsernameNullError(isValid);    
+    dispatch(setError(""));
 
   }
   
   
   const onChangePasswordHandler=(e)=>{
     e.preventDefault();
+    dispatch(setError(""));
 
-    // let isValid = isValidInput(registerForm.current.current_password.value)
-    // console.log("valid password === " ,isValid)
-    // setPasswordNullError(isValid);  
-  
   } 
 
   const onChangeNewPasswordHandler=(e)=>{
     e.preventDefault();
-    // let isValid = isValidInput(registerForm.current.new_password.value)
-    // console.log("valid new password === " ,isValid)
-    // setNewPasswordNullError(isValid);  
+    dispatch(setError(""));
       
   }
   const onChangeConfirmPasswordHandler=(e)=>{
     e.preventDefault();
-    // let isValid = isValidInput(registerForm.current.confirm_password.value)
-    // console.log("valid confirm password === " ,isValid)
-    // setConfirmPasswordNullError(isValid);  
+    dispatch(setError(""));    
       
   }
-
 
 
  // When the user clicks on the password field, show the message box
@@ -80,64 +68,29 @@ const onBlurHandler = function(current_className) {
     const current_password = resetPasswordFormRef.current.current_password.value
     const new_password = resetPasswordFormRef.current.new_password.value
     const confirm_password = resetPasswordFormRef.current.confirm_password.value
-    console.log("clicking handle submit reset password")
-
-    
-   
-
-    if (email.trim().length === 0) {
-      console.log("invalid username")
-       
-        setUsernameNullError(true);
-       // openModal('id01');
-
-    }
-     if(current_password.trim().length === 0){
-      console.log("invalid password")
-
-        setPasswordNullError(true);  
-      
-      //  openModal('id01');
-    }
-    
-    if(new_password.trim().length === 0){
-      console.log("invalid  newPasswordNullError  password")
-
-        setNewPasswordNullError(true);  
-      
-      //  openModal('id01');
-    }
-
-    if(confirm_password.trim().length === 0){
-      console.log("invalid confirmPasswordNullError  password")
-
-        setConfirmPasswordNullError(true);  
-      
-       // openModal('id01');
-    }
 
   
     if(new_password !== confirm_password){
-        alert('Passwords did not match!')
-      //  openModal('id01');
+      dispatch(setError('new and confirm passwords don\'t match!'));
 
     }
-    // if(usernameNullError === false && passwordNullError === false && newPasswordNullError === false && confirmPasswordNullError === false 
-    //    && new_password.length >= 8 && new_password === confirm_password){
-      if( 2 > 1){
-    
+    else{    
 
     resetPassword({	email, new_password,current_password})
     .then((response) => {		
         console.log(JSON.stringify(response))	
         const {data} = response
-        console.log(JSON.stringify(data))     
-        setResdata(JSON.stringify(data))  
-        alert(JSON.stringify(data))   
-      openModal("resetPassword")     
-        //navigate('/signin');
+
+        alert(JSON.stringify(data))  
+        openModal("resetPassword") 
+
+      if(response.error){
+
+        dispatch(setError(response.error.data.message))
+    
+      }
+     
     })
-.catch((error) =>{  console.log(JSON.stringify("line 67 error: ",error));});               
 
   }
 
@@ -146,38 +99,52 @@ const onBlurHandler = function(current_className) {
   return (
     <>
     <ResetPasswordModal id="resetPassword"/>
-    <div>
+    <div className='container'>
       <div className="text-center py-4">
-        <h1 className="text-7xl font-semibold">Change Password</h1>
-        <p className="font-light text-lg">
+        <h1 className="text-7xl font-semibold text"
+         style={{
+
+          textAlign: 'center',
+          textShadowColor: 'green',
+          textShadowRadius: 20,
+          color:"green"
+      
+        }}
+        
+        >Change Password</h1>
+        <p className="font-light text-lg" style={{fontStyle: "italic",fontWeight: "bold",color:"green" }}>
           please create account to access our services
         </p>
       </div>
       <form onSubmit={handleSubmit} ref={resetPasswordFormRef}>
         <InputField containerClassName="flex items-center space-x-1 bg-gray-200 rounded-lg p-2"  onChange={onChangeEmailHandler}
-                    inputClassName="bg-transparent w-full outline-none" type="text" placeholder="email" value={email}
+                    inputClassName="bg-transparent w-full outline-none" type="text" placeholder="email" value={email} required={true}
                     iconClassName="fa fa-envelope fa-md" />
 
         <InputField containerClassName="my-4 flex items-center space-x-1 bg-gray-200 rounded-lg p-2" name="current_password"
-                    inputClassName="bg-transparent w-full outline-none" type="password" placeholder="current password" 
-                    iconClassName="fa fa-lock fa-lg" />
+                    inputClassName="bg-transparent w-full outline-none" type="password" placeholder="current password" required={true}
+                    iconClassName="fa fa-lock fa-lg"  onChange={onChangePasswordHandler}/>
 
         <InputField containerClassName="my-4 flex items-center space-x-1 bg-gray-200 rounded-lg p-2" name="new_password"
-                    inputClassName="bg-transparent w-full outline-none" type="password" placeholder="new password" 
-                    iconClassName="fa fa-lock fa-lg" />
+                    inputClassName="bg-transparent w-full outline-none" type="password" placeholder="new password" required={true}
+                    iconClassName="fa fa-lock fa-lg" onChange={onChangeNewPasswordHandler}/>
 
         <InputField containerClassName="my-4 flex items-center space-x-1 bg-gray-200 rounded-lg p-2" name="confirm_password"
-                    inputClassName="bg-transparent w-full outline-none" type="password" placeholder="confirm password" 
-                    iconClassName="fa fa-lock fa-lg" />
+                    inputClassName="bg-transparent w-full outline-none" type="password" placeholder="confirm password" required={true}
+                    iconClassName="fa fa-lock fa-lg" onChange={onChangeConfirmPasswordHandler}/>
 
 
-        <button className="bg-black text-white rounded-lg w-full p-2 mb-4">Change Password</button>
+        <button className="bg-black text-white rounded-lg w-full p-2 mb-4" 
+        style={{fontStyle: "italic",fontWeight: "bold",backgroundColor:"green" }}>Change Password</button>
         <div>res data === {resData}</div>
       </form>
     </div>
           <div className="pb-4 text-sm flex items-center justify-between">
-          <p>Remember Password?</p>
-          <button onClick={()=>handleNavClickDelay("/login",1000,navigate, true, setIsActive,{email : email})} className="font-semibold underline">Login</button>
+          <p  style={{fontStyle:"italic",cursor: "pointer",color:"green"}}>Remember Password?</p>
+          <button onClick={()=>handleNavClickDelay("/login",1000,navigate, true, setIsActive,{email : email})} className="font-semibold underline"
+            style={{fontStyle:"italic",cursor: "pointer",color:"green"}}
+            
+            >Login</button>
       </div>
     </>
   );

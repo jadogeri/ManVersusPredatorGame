@@ -4,9 +4,8 @@ import FormFieldInput from '../../input/FormFieldInput';
 import { useLoginMutation } from '../../../redux/api/user'
 import { handleNavClickDelay } from "../../../handleNavClickDelay";
 import "./styles.css"
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { setError } from '../../../redux/feature/session/sessionSlice';
-import { selectSessionError } from "../../../redux/feature/session/sessionSlice";
 
 
 
@@ -30,7 +29,7 @@ const LoginForm = () => {
   const onChangeEmailHandler=(e)=>{
     e.preventDefault();
     setEmail(e.target.value);
-    dispatch(setError(""));
+
     //let isValid = isValidInp;ut(e.target.value)
     //console.log("valid username === " ,isValid)
     
@@ -47,16 +46,11 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     
-    let newData = {}
-   
     e.preventDefault();  
     const password = loginForm.current?.password?.value;
      
- console.log("before login call ..........................................................................") 
 login({email : email ,password: password})
 .then((response)=>{
-  console.log("response data === ",JSON.stringify(response.data));
-  console.log("after login call ..........................................................................") 
 
   if(response.error){
 

@@ -8,7 +8,6 @@ import UserData from "../../components/UserData";
 import "./styles.css"
 import { useSelector} from "react-redux";
 import { selectSessionError } from "../../redux/feature/session/sessionSlice";
-import RegisterForm from "../../components/form/RegisterForm/RegisterForm";
 
 const Login = () => {
     const errorMessage1 = useSelector(selectSessionError)

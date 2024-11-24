@@ -4,9 +4,12 @@ import RegisterForm from '../../components/form/RegisterForm/RegisterForm';
 import { useNavigate } from 'react-router-dom';
 import { handleNavClickDelay } from '../../handleNavClickDelay';
 import UserData from '../../components/UserData';
+import { useSelector} from "react-redux";
+import { selectSessionError } from "../../redux/feature/session/sessionSlice";
 
 
 const Register = () => {
+  const errorMessage = useSelector(selectSessionError)
   const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate();
  // const navDelay = (route) => { setTimeout(navigate(route), 5000);
@@ -17,12 +20,14 @@ const Register = () => {
       <div className="lg:w-[40%]">
       {/* {isLogin ? <Login /> : <Signup />} */}
 
-      <UserData />
       <RegisterForm />
         <div className="pb-4 text-sm flex items-center justify-between">
             <p>Already have an account?</p>
             <button onClick={()=>handleNavClickDelay("/login",1000,navigate, true, setIsActive)} className="font-semibold underline">Login</button>
         </div>
+        {
+          errorMessage.length === 0?<p style={{display:"block"}}>.</p>: <p style={{color :"red",display:"block"}}>{errorMessage}</p>
+        }
         
       </div>
 

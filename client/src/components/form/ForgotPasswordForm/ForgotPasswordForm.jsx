@@ -7,11 +7,16 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useForgotPasswordMutation } from '../../../redux/api/user';
 import ResetPasswordModal from '../../modals/ResetPasswordModal';
 import {openModal} from "../../../utils/htmlUtil/openModal"
+import {  useDispatch } from "react-redux";
+import { setError } from '../../../redux/feature/session/sessionSlice';
+import Spacer from '../../Spacer';
 
-const ResetPasswordForm = () => {
+
+
+const ForgotPasswordForm = () => {
   const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate();
- // const navDelay = (route) => { setTimeout(navigate(route), 5000);
+  const dispatch = useDispatch();
 
  const resetPasswordFormRef = useRef("");
   
@@ -28,6 +33,7 @@ const ResetPasswordForm = () => {
   const onChangeEmailHandler=(e)=>{
     e.preventDefault();
     setEmail(e.target.value);
+    dispatch(setError(""));
     // let isValid = isValidInput(e.target.value)
     // console.log("valid username === " ,isValid)
     // setUsernameNullError(isValid);    
@@ -35,23 +41,95 @@ const ResetPasswordForm = () => {
   }
   
 
- // When the user clicks on the password field, show the message box
-const onFocusHandler = function(current_className,other_className) {
-  document.getElementById(current_className).style.display = "block";
-  document.getElementById(other_className).style.display = "none";
-}
-
-// When the user clicks outside of the password field, hide the message box
-const onBlurHandler = function(current_className) {
-  document.getElementById(current_className).style.display = "none";
-}
-
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    console.log("clicking handle submit reset password")
 
+    if (email.trim().length === 0) {
+      dispatch(setError("Email must be provided"));
+
+
+    }else{
     
+console.log("email === ", email)
+    forgotPassword({	email})
+    .then((response) => {		
+        console.log(JSON.stringify(response))	
+        const {data} = response
+ 
+        if(response.error){
+
+          dispatch(setError(response.error.data.message))
+      
+        } else{
+          openModal("resetPassword")     
+
+        }
+        //navigate('/signin');
+    })
+
+  }
+
+}
+
+  return (
+    <>
+    {/* <ResetPasswordModal/> */}
+    <div className='container'>
+      <div className="text-center py-4">
+        <h1 className="text-7xl font-semibold text"
+        style={{
+
+          textAlign: 'center',
+          textShadowColor: 'green',
+          textShadowRadius: 20,
+          color:"green"
+      
+        }}
+        
+        >Forgot Password</h1>
+        <p className="font-light text-lg" style={{fontStyle: "italic",fontWeight: "bold",color:"green" }}>
+          please reset password to access our services
+        </p>
+      </div>
+      <form onSubmit={handleSubmit} ref={resetPasswordFormRef}>
+        <InputField containerClassName="flex items-center space-x-1 bg-gray-200 rounded-lg p-2"  onChange={onChangeEmailHandler}
+                    inputClassName="bg-transparent w-full outline-none" type="text" placeholder="email" value={email}
+                    iconClassName="fa fa-envelope fa-md" />
+ 
+<Spacer marginBottom={15}/>
+        <button className="bg-black text-white rounded-lg w-full p-2 mb-4"
+                    style={{backgroundColor:"green"}}
+
+        >Send to email</button>
+      </form>
+    </div>
+          <div className="pb-4 text-sm flex items-center justify-between">
+          <p style={{color:"green"}}>Remember Password?</p>
+          <button onClick={()=>handleNavClickDelay("/login",1000,navigate, true, setIsActive,{email : email})} className="font-semibold underline"
+            style={{color:"green"}}
+            >Login</button>
+      </div>
+    </>
+  );
+};
+
+export default ForgotPasswordForm  
+
+/**
+ * 
+ * 
+ * 
+ 
+
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const current_password = registerForm.current.current_password.value
+    const new_password = registerForm.current.new_password.value
+    const confirm_password = registerForm.current.confirm_password.value
+    console.log("clicking handle submit reset password")
    
 
     if (email.trim().length === 0) {
@@ -61,21 +139,46 @@ const onBlurHandler = function(current_className) {
        // openModal('id01');
 
     }
-  
+     if(current_password.trim().length === 0){
+      console.log("invalid password")
 
-    // if(usernameNullError === false && passwordNullError === false && newPasswordNullError === false && confirmPasswordNullError === false 
-    //    && new_password.length >= 8 && new_password === confirm_password){
-      if( 2 > 1){
+        setPasswordNullError(true);  
+      
+      //  openModal('id01');
+    }
     
-console.log("email === ", email)
-    forgotPassword({	email})
+    if(new_password.trim().length === 0){
+      console.log("invalid  newPasswordNullError  password")
+
+        setNewPasswordNullError(true);  
+      
+      //  openModal('id01');
+    }
+
+    if(confirm_password.trim().length === 0){
+      console.log("invalid confirmPasswordNullError  password")
+
+        setConfirmPasswordNullError(true);  
+      
+       // openModal('id01');
+    }
+
+  
+    if(new_password !== confirm_password){
+        alert('Passwords did not match!')
+      //  openModal('id01');
+
+    }
+    if(usernameNullError === false && passwordNullError === false && newPasswordNullError === false && confirmPasswordNullError === false 
+       && new_password.length >= 8 && new_password === confirm_password){
+
+    resetPassword({	email : email, new_password,confirm_password})
     .then((response) => {		
         console.log(JSON.stringify(response))	
         const {data} = response
-        console.log(JSON.stringify(data))     
-        setResdata(JSON.stringify(data))  
+        console.log(JSON.stringify(data))       
         alert(JSON.stringify(data))   
-      openModal("resetPassword")     
+      //  openModal("resetPassword")     
         //navigate('/signin');
     })
 .catch((error) =>{  console.log(JSON.stringify("line 67 error: ",error));});               
@@ -84,32 +187,7 @@ console.log("email === ", email)
 
 }
 
-  return (
-    <>
-    <ResetPasswordModal/>
-    <div>
-      <div className="text-center py-4">
-        <h1 className="text-7xl font-semibold">Reset Password</h1>
-        <p className="font-light text-lg">
-          please reset password to access our services
-        </p>
-      </div>
-      <form onSubmit={handleSubmit} ref={resetPasswordFormRef}>
-        <InputField containerClassName="flex items-center space-x-1 bg-gray-200 rounded-lg p-2"  onChange={onChangeEmailHandler}
-                    inputClassName="bg-transparent w-full outline-none" type="text" placeholder="email" value={email}
-                    iconClassName="fa fa-envelope fa-md" />
- 
 
-        <button className="bg-black text-white rounded-lg w-full p-2 mb-4">Send to email</button>
-        <div>res data === {resData}</div>
-      </form>
-    </div>
-          <div className="pb-4 text-sm flex items-center justify-between">
-          <p>Remember Password?</p>
-          <button onClick={()=>handleNavClickDelay("/login",1000,navigate, true, setIsActive,{email : email})} className="font-semibold underline">Login</button>
-      </div>
-    </>
-  );
-};
 
-export default ResetPasswordForm  
+
+ */

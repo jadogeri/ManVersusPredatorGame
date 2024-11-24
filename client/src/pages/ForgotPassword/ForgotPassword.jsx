@@ -6,133 +6,23 @@ import UserData from '../../components/UserData';
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useResetPasswordMutation } from '../../redux/api/user';
 import "./styles.css"
+import Spacer from '../../components/Spacer';
+
+import { useSelector} from "react-redux";
+import { selectSessionError } from "../../redux/feature/session/sessionSlice";
 
 
 const ForgotPassword = () => {
   const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate();
  // const navDelay = (route) => { setTimeout(navigate(route), 5000);
- const registerForm = useRef("");
-  
-  const location = useLocation();
-  const [email, setUsername] = useState(location.state?.email );
-  const [resetPassword] = useResetPasswordMutation();
-  const [usernameNullError, setUsernameNullError] = useState(false)
-  const [passwordNullError, setPasswordNullError] = useState(false)
-  const [newPasswordNullError, setNewPasswordNullError] = useState(false)
-  const [confirmPasswordNullError, setConfirmPasswordNullError] = useState(false)
 
-  const onChangeUsernameHandler=(e)=>{
-    e.preventDefault();
-    setUsername(e.target.value);
-    // let isValid = isValidInput(e.target.value)
-    // console.log("valid username === " ,isValid)
-    // setUsernameNullError(isValid);    
-
-  }
-  
-  
-  const onChangePasswordHandler=(e)=>{
-    e.preventDefault();
-
-    // let isValid = isValidInput(registerForm.current.current_password.value)
-    // console.log("valid password === " ,isValid)
-    // setPasswordNullError(isValid);  
-  
-  } 
-
-  const onChangeNewPasswordHandler=(e)=>{
-    e.preventDefault();
-    // let isValid = isValidInput(registerForm.current.new_password.value)
-    // console.log("valid new password === " ,isValid)
-    // setNewPasswordNullError(isValid);  
-      
-  }
-  const onChangeConfirmPasswordHandler=(e)=>{
-    e.preventDefault();
-    // let isValid = isValidInput(registerForm.current.confirm_password.value)
-    // console.log("valid confirm password === " ,isValid)
-    // setConfirmPasswordNullError(isValid);  
-      
-  }
+  const errorMessage = useSelector(selectSessionError)
 
 
-
- // When the user clicks on the password field, show the message box
-const onFocusHandler = function(current_className,other_className) {
-  document.getElementById(current_className).style.display = "block";
-  document.getElementById(other_className).style.display = "none";
-}
-
-// When the user clicks outside of the password field, hide the message box
-const onBlurHandler = function(current_className) {
-  document.getElementById(current_className).style.display = "none";
-}
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const current_password = registerForm.current.current_password.value
-    const new_password = registerForm.current.new_password.value
-    const confirm_password = registerForm.current.confirm_password.value
-    console.log("clicking handle submit reset password")
-   
-
-    if (email.trim().length === 0) {
-      console.log("invalid username")
-       
-        setUsernameNullError(true);
-       // openModal('id01');
-
-    }
-     if(current_password.trim().length === 0){
-      console.log("invalid password")
-
-        setPasswordNullError(true);  
-      
-      //  openModal('id01');
-    }
-    
-    if(new_password.trim().length === 0){
-      console.log("invalid  newPasswordNullError  password")
-
-        setNewPasswordNullError(true);  
-      
-      //  openModal('id01');
-    }
-
-    if(confirm_password.trim().length === 0){
-      console.log("invalid confirmPasswordNullError  password")
-
-        setConfirmPasswordNullError(true);  
-      
-       // openModal('id01');
-    }
-
-  
-    if(new_password !== confirm_password){
-        alert('Passwords did not match!')
-      //  openModal('id01');
-
-    }
-    if(usernameNullError === false && passwordNullError === false && newPasswordNullError === false && confirmPasswordNullError === false 
-       && new_password.length >= 8 && new_password === confirm_password){
-
-    resetPassword({	email : email, new_password,confirm_password})
-    .then((response) => {		
-        console.log(JSON.stringify(response))	
-        const {data} = response
-        console.log(JSON.stringify(data))       
-        alert(JSON.stringify(data))   
-      //  openModal("resetPassword")     
-        //navigate('/signin');
-    })
-.catch((error) =>{  console.log(JSON.stringify("line 67 error: ",error));});               
-
-  }
-
-}
 
   return (
+    <div style={{backgroundColor: "black"}}>
     <div className="px-4 max-w-7xl mx-auto lg:space-x-20 flex justify-center items-center h-screen">
       
 
@@ -177,8 +67,11 @@ const onBlurHandler = function(current_className) {
         <div className="flex items-center space-x-4">
      
         </div>
+        <Spacer marginBottom={5}/>
 
-        
+        {
+          errorMessage.length === 0?<p style={{display:"block"}}>.</p>: <p style={{color :"red",display:"block"}}>{errorMessage}</p>
+        }
       </div>
 
       
@@ -188,6 +81,7 @@ const onBlurHandler = function(current_className) {
         <img className="rounded-2xl"  alt=""  src={img}/>
 
       </div>
+    </div>
     </div>
   );
 };

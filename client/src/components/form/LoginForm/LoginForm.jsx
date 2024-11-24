@@ -4,6 +4,10 @@ import FormFieldInput from '../../input/FormFieldInput';
 import { useLoginMutation } from '../../../redux/api/user'
 import { handleNavClickDelay } from "../../../handleNavClickDelay";
 import "./styles.css"
+import { useSelector, useDispatch } from "react-redux";
+import { setError } from '../../../redux/feature/session/sessionSlice';
+import { selectSessionError } from "../../../redux/feature/session/sessionSlice";
+
 
 
 
@@ -14,6 +18,8 @@ const LoginForm = () => {
   const [password,setPassword] = useState(""); 
   const [dataRes, setDataRes] = useState(null);
   const [isActive, setIsActive] = useState(false);
+  const dispatch = useDispatch();
+
 
 
   const loginForm = useRef(null);
@@ -24,7 +30,8 @@ const LoginForm = () => {
   const onChangeEmailHandler=(e)=>{
     e.preventDefault();
     setEmail(e.target.value);
-    //let isValid = isValidInput(e.target.value)
+    dispatch(setError(""));
+    //let isValid = isValidInp;ut(e.target.value)
     //console.log("valid username === " ,isValid)
     
 
@@ -32,8 +39,8 @@ const LoginForm = () => {
 
   const onChangePasswordHandler=(e)=>{
     e.preventDefault();
-
     setPassword(loginForm.current.password.value)
+    dispatch(setError(""))
     //console.log("valid password === " ,isValid)
   
   }
@@ -52,7 +59,8 @@ login({email : email ,password: password})
   console.log("after login call ..........................................................................") 
 
   if(response.error){
-    alert("errrrrrrrrrrrrorrrrrrrrr")
+
+    dispatch(setError(response.error.data.message))
 
   }
   else{
@@ -64,13 +72,21 @@ login({email : email ,password: password})
 })
 
 }
-
-
     return (
-      <div className='container' style={{backgroundColor:"blue"}}>
+      <div className='container' style={{backgroundColor:"black"}}>
         <div className="text-center py-4">
-          <h1 className="text-7xl font-semibold">Login</h1>
-          <p className="font-light text-lg">
+          <h1 className="text-7xl font-semibold text"
+          style={{
+
+            textAlign: 'center',
+            textShadowColor: 'green',
+            textShadowRadius: 20,
+            color:"green"
+        
+          }}
+          
+          >Login</h1>
+          <p className="font-light text-lg" style={{fontStyle: "italic",fontWeight: "bold",color:"green" }}>
             Please login to access our services
           </p>
         </div>
@@ -83,17 +99,17 @@ login({email : email ,password: password})
                   inputClassName="bg-transparent w-full outline-none" type="password" placeholder="password" 
                   iconClassName="fa fa-lock fa-lg" required={true}  onChange={onChangePasswordHandler}/>
           <div className="pb-4 text-sm flex items-center justify-between">
-            <p onClick={()=>handleNavClickDelay("/forgotpassword",1000,navigate,true,setIsActive, {email : email})}  style={{fontStyle:"italic",cursor: "pointer"}}>Forgot password?</p>
-            <button onClick={()=>handleNavClickDelay("/resetpassword",1000,navigate,true,setIsActive, {email : email})} className="font-semibold underline">Change Password</button>
+            <p onClick={()=>handleNavClickDelay("/forgotpassword",1000,navigate,true,setIsActive, {email : email})}  style={{fontStyle:"italic",cursor: "pointer",color:"green" }}>Forgot password?</p>
+            <p onClick={()=>handleNavClickDelay("/resetpassword",1000,navigate,true,setIsActive, {email : email})} className="font-semibold underline" style={{fontStyle:"italic",cursor: "pointer",color:"green"}}
+              >Change Password</p>
         </div>
 
-          <button className="bg-black text-white rounded-lg w-full p-2 mb-4" >Login</button>
+          <button className="bg- text-white rounded-lg w-full p-2 mb-4" style={{backgroundColor:"green"}}>Login</button>
         
         </form>
 
 
-        <div>email == {email} </div>
-        <div>data response ==  {JSON.stringify(dataRes,null,3)} </div>
+        
       </div>
     );
 

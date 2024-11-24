@@ -23,10 +23,6 @@ const Register = () => {
             <p>Already have an account?</p>
             <button onClick={()=>handleNavClickDelay("/login",1000,navigate, true, setIsActive)} className="font-semibold underline">Login</button>
         </div>
-        <div className="flex items-center space-x-4">
-     
-        </div>
-
         
       </div>
 

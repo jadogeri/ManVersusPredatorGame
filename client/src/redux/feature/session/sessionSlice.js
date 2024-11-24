@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 
-let initialStatetate = {
+let initialState = {
     username : "user", 
     email : "mail",
     password : "pass",
@@ -17,7 +17,7 @@ let initialStatetate = {
 
 const sessionSlice = createSlice({
   name: "session",
-  initialState: initialStatetate,
+  initialState: initialState,
 
   reducers: {
 
@@ -29,6 +29,9 @@ const sessionSlice = createSlice({
     },
     setEmail : (state , action) =>{
         state.email = action.payload
+    },
+    setError : (state , action) =>{
+        state.errorMessage= action.payload
     }
 
   },
@@ -37,10 +40,13 @@ const sessionSlice = createSlice({
 export const {
     setSessionData,
     setUsername,
-    setEmail
+    setEmail,
+    setError
 } = sessionSlice.actions;
 
 export const selectSessionState= (state) => { return state.session};
+export const selectSessionError= (state) => { return state.session.errorMessage};
+
 // export const selectSessionJur= (state) => { return state.session.jur};
 // export const selectSessionTaxYear= (state) => { return state.session.taxyear};
 

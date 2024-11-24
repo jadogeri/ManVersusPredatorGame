@@ -30,9 +30,9 @@ const Login = () => {
       <UserData />
      <LoginForm/>
         <div className="pb-4 text-sm flex items-center justify-between">
-            <p style={{color:"green"}}className="text">Already have an account?</p>
-            <button onClick={()=>handleNavClickDelay("/login",1000,navigate, true, setIsActive)} className="font-semibold underline"
-                style={{color:"green"}}>Login</button>
+            <p style={{color:"green"}}className="text">Don't have an account?</p>
+            <button onClick={()=>handleNavClickDelay("/register",1000,navigate, true, setIsActive)} className="font-semibold underline"
+                style={{color:"green"}}>Sign Up</button>
         </div>
         {
                     errorMessage1.length === 0?<p style={{display:"block"}}>.</p>: <p style={{color :"red",display:"block"}}>{errorMessage1}</p>

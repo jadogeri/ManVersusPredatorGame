@@ -140,7 +140,7 @@ const onBlurHandler = function(current_className) {
     </div>
           <div className="pb-4 text-sm flex items-center justify-between">
           <p  style={{fontStyle:"italic",cursor: "pointer",color:"green"}}>Remember Password?</p>
-          <button onClick={()=>handleNavClickDelay("/login",1000,navigate, true, setIsActive,{email : email})} className="font-semibold underline"
+          <button onClick={()=>{ dispatch(setError(""));handleNavClickDelay("/login",1000,navigate, true, setIsActive,{email : email})}} className="font-semibold underline"
             style={{fontStyle:"italic",cursor: "pointer",color:"green"}}
             
             >Login</button>

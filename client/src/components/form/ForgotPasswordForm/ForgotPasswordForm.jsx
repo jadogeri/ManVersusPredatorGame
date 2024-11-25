@@ -47,15 +47,11 @@ const ForgotPasswordForm = () => {
 
       }
       else{
-        openModal("forgotpassword")     
+       // openModal("forgotpassword")     
 
-
-    /*
     forgotPassword({	email})
     .then((response) => {		
-        console.log(JSON.stringify(response))	
-        const {data} = response
- 
+   
         if(response.error){
 
           dispatch(setError(response.error.data.message))
@@ -64,8 +60,7 @@ const ForgotPasswordForm = () => {
           openModal("resetPassword")     
 
         }
-        //navigate('/signin');
-    }) */
+    }) 
   }
   }
 
@@ -105,7 +100,8 @@ const ForgotPasswordForm = () => {
     </div>
           <div className="pb-4 text-sm flex items-center justify-between">
           <p style={{color:"green"}}>Remember Password?</p>
-          <button onClick={()=>handleNavClickDelay("/login",1000,navigate, true, setIsActive,{email : email})} className="font-semibold underline"
+          <button onClick={()=>{dispatch(setError(""));
+                         handleNavClickDelay("/login",1000,navigate, true, setIsActive,{email : email})}} className="font-semibold underline"
             style={{color:"green"}}
             >Login</button>
       </div>

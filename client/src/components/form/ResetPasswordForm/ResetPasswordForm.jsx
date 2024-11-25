@@ -78,16 +78,14 @@ const onBlurHandler = function(current_className) {
 
     resetPassword({	email, new_password,current_password})
     .then((response) => {		
-        console.log(JSON.stringify(response))	
-        const {data} = response
-
-        alert(JSON.stringify(data))  
-        openModal("resetPassword") 
-
+  
       if(response.error){
 
         dispatch(setError(response.error.data.message))
     
+      }else{
+        openModal("resetPassword") 
+
       }
      
     })

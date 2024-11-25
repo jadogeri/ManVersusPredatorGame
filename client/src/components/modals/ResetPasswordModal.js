@@ -33,4 +33,3 @@ const ResetPasswordModal = (props) => {
 }
 
 export default ResetPasswordModal
-

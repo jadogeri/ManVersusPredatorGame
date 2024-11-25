@@ -5,12 +5,11 @@ import { handleNavClickDelay } from '../../../handleNavClickDelay';
 import UserData from '../../../components/UserData';
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useForgotPasswordMutation } from '../../../redux/api/user';
-import ResetPasswordModal from '../../modals/ResetPasswordModal';
 import {openModal} from "../../../utils/htmlUtil/openModal"
 import {  useDispatch } from "react-redux";
 import { setError } from '../../../redux/feature/session/sessionSlice';
 import Spacer from '../../Spacer';
-
+import ForgotPasswordModal from '../../modals/ForgotPasswordModal';
 
 
 const ForgotPasswordForm = () => {
@@ -24,9 +23,6 @@ const ForgotPasswordForm = () => {
   const [email, setEmail] = useState(location.state?.email ? location.state.email : ""  );
 
   const  [ forgotPassword ] = useForgotPasswordMutation();
-  const [usernameNullError, setUsernameNullError] = useState(false)
-  const [resData, setResdata] = useState("")
-
 
 
 
@@ -34,9 +30,6 @@ const ForgotPasswordForm = () => {
     e.preventDefault();
     setEmail(e.target.value);
     dispatch(setError(""));
-    // let isValid = isValidInput(e.target.value)
-    // console.log("valid username === " ,isValid)
-    // setUsernameNullError(isValid);    
 
   }
   
@@ -48,10 +41,16 @@ const ForgotPasswordForm = () => {
     if (email.trim().length === 0) {
       dispatch(setError("Email must be provided"));
 
-
     }else{
-    
-console.log("email === ", email)
+      if(email.trim().indexOf("@") === -1){
+        dispatch(setError("Emailis not valid"));
+
+      }
+      else{
+        openModal("forgotpassword")     
+
+
+    /*
     forgotPassword({	email})
     .then((response) => {		
         console.log(JSON.stringify(response))	
@@ -66,15 +65,15 @@ console.log("email === ", email)
 
         }
         //navigate('/signin');
-    })
-
+    }) */
+  }
   }
 
 }
 
   return (
     <>
-    {/* <ResetPasswordModal/> */}
+    <ForgotPasswordModal/>
     <div className='container'>
       <div className="text-center py-4">
         <h1 className="text-7xl font-semibold text"

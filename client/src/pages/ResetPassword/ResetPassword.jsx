@@ -2,9 +2,7 @@ import React, {useRef, useState} from 'react'
 import img from "../../assets/villainImages/Predator.jpg"
 import ResetPasswordForm from '../../components/form/ResetPasswordForm/ResetPasswordForm';
 import {useLocation, useNavigate } from 'react-router-dom'
-import { useResetPasswordMutation } from '../../redux/api/user';
 import "./styles.css"
-import ConfirmationModal from "../../components/modals/ConfirmationModal/ConfirmationModal"
 import { useSelector} from "react-redux";
 import { selectSessionError } from "../../redux/feature/session/sessionSlice";
 

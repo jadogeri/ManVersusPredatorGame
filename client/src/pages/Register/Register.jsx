@@ -29,9 +29,7 @@ const Register = () => {
           errorMessage.length === 0?<p style={{display:"block"}}>.</p>: <p style={{color :"red",display:"block"}}>{errorMessage}</p>
         }
         
-      </div>
-
-      
+      </div>     
 
       <div className="w-1/2 hidden lg:block">
         {/* <img className="rounded-2xl"  alt=""  src={boy}/> */}

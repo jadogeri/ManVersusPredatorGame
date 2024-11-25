@@ -34,12 +34,10 @@ const Login = () => {
                 style={{color:"green"}}>Sign Up</button>
         </div>
         {
-                    errorMessage1.length === 0?<p style={{display:"block"}}>.</p>: <p style={{color :"red",display:"block"}}>{errorMessage1}</p>
+          errorMessage1.length === 0?<p style={{display:"block"}}>.</p>: <p style={{color :"red",display:"block"}}>{errorMessage1}</p>
         }
 
-      </div>
-
-      
+      </div>     
 
       <div className="w-1/2 hidden lg:block">
         <img className="rounded-2xl"  alt=""  src={img} style={{borderWidth:1,borderColor:"red", width:"100%",height:670,padding:40}}/>

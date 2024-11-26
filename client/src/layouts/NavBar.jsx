@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { openTab } from '../utils/htmlUtil/openTab'
+import { w3_open } from '../utils/htmlUtil/w3_open';
 
 
 const NavBar = () => {
@@ -43,7 +44,7 @@ const NavBar = () => {
       <a
         href="javascript:void(0)"
         className="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
-        onclick="w3_open()"
+        onClick={()=>{w3_open()}}
       >
         <i className="fa fa-bars" />
       </a>

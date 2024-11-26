@@ -91,7 +91,7 @@ const ForgotPasswordForm = () => {
                     inputClassName="bg-transparent w-full outline-none" type="text" placeholder="email" value={email}
                     iconClassName="fa fa-envelope fa-md" />
  
-<Spacer marginBottom={15}/>
+<Spacer marginBottom={15} marginTop={10}/>
         <button className="bg-black text-white rounded-lg w-full p-2 mb-4"
                     style={{backgroundColor:"green"}}
 

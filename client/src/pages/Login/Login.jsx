@@ -4,7 +4,6 @@ import logo from "../../assets/villainImages/PredatorHome.jpg"
 import LoginForm from "../../components/form/LoginForm/LoginForm";
 import { useNavigate } from "react-router-dom";
 import { handleNavClickDelay } from "../../handleNavClickDelay";
-import UserData from "../../components/UserData";
 import "./styles.css"
 import { useSelector} from "react-redux";
 import { selectSessionError } from "../../redux/feature/session/sessionSlice";
@@ -20,13 +19,12 @@ const Login = () => {
     <div  style={{backgroundColor:"black"}} >
    <div   className="px-4 max-w-7xl mx-auto lg:space-x-20 flex justify-center items-center h-screen">
       
-      <div className="lg:w-[40%] r" 
+      <div className="lg:w-[40%]" 
       style={{
-        marginBottom :300
+        marginBottom :30
       }}>
    
 
-      <UserData />
      <LoginForm/>
         <div className="pb-4 text-sm flex items-center justify-between">
             <p style={{color:"green"}}className="text">Don't have an account?</p>

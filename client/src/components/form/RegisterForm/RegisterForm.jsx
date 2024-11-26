@@ -6,6 +6,8 @@ import { handleNavClickDelay } from "../../../handleNavClickDelay";
 import "./styles.css"
 import {  useDispatch } from "react-redux";
 import { setError } from '../../../redux/feature/session/sessionSlice';
+import { openModal } from '../../../utils/htmlUtil/openModal';
+import RegisterModal from '../../modals/RegisterModal';
 
 
 
@@ -65,6 +67,7 @@ const RegisterForm = () => {
 
     }else{
       alert("call regester endpoint")
+
       register({email : email, username : username , password : newPassword})
       .then((response)=>{
         if(response.error){
@@ -73,9 +76,10 @@ const RegisterForm = () => {
       
         }
         else{
-          
+          openModal("register");          
         }
       })
+      
     }
 
   
@@ -85,10 +89,22 @@ const RegisterForm = () => {
   }
 
   return (
-    <div>
+    <>
+    <RegisterModal id="register" />
+    <div  className='container' style={{backgroundColor:"black"}}>
       <div className="text-center py-4">
-        <h1 className="text-7xl font-semibold">Register</h1>
-        <p className="font-light text-lg">
+        <h1 className="text-7xl font-semibold text"
+        style={{
+
+          textAlign: 'center',
+          textShadowColor: 'green',
+          textShadowRadius: 20,
+          color:"green"
+      
+        }}
+        
+        >Register</h1>
+        <p className="font-light text-lg" style={{fontStyle: "italic",fontWeight: "bold",color:"green" }}>
           please create account to access our services
         </p>
       </div>
@@ -114,6 +130,7 @@ const RegisterForm = () => {
         style={{backgroundColor:"green"}}>Sign up</button>
       </form>
     </div>
+    </>
   );
 };
 

@@ -27,10 +27,10 @@ const DashBoard = () => {
     />
 
     {/* Navbar (sit on top) */}
-    <div className="w3-top">
+     <div className="w3-top">
       <div className="w3-bar w3-white w3-card" id="myNavbar">
         <a href="#home" className="w3-bar-item w3-button w3-wide">
-          LOGO
+          LOGO 
         </a>
         {/* Right-sided navbar links */}
         <div className="w3-right w3-hide-small">
@@ -59,7 +59,7 @@ const DashBoard = () => {
           <i className="fa fa-bars" />
         </a>
       </div>
-    </div>
+    </div> 
     {/* Sidebar on small screens when clicking the menu icon */}
     <nav
       className="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
@@ -74,7 +74,7 @@ const DashBoard = () => {
         Close ×
       </a>
       <a href="#about"   onClick={()=>{w3_close()}}  className="w3-bar-item w3-button">
-        ABOUT
+        ABOUT 
       </a>
       <a href="#team" onClick={()=>{w3_close()}}  className="w3-bar-item w3-button">
         TEAM

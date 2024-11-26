@@ -49,7 +49,10 @@ login({email : email ,password: password})
 
   }
   else{
-  localStorage.setItem("authKey",JSON.stringify(response.data))
+    console.log("logging in ..............")
+    console.log(response.data)
+  localStorage.setItem("AUTHKEY",JSON.stringify(response.data))
+  console.log("from storage == ",localStorage.getItem("AUTHKEY"))
   navigate("/dashboard",{ state : response.data})
   }
 

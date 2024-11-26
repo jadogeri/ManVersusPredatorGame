@@ -7,15 +7,11 @@ import "./styles.css"
 import {  useDispatch } from "react-redux";
 import { setError } from '../../../redux/feature/session/sessionSlice';
 
-
-
-
 const LoginForm = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [email, setEmail] = useState(location.state?.email ? location.state.email : ""  );
   const [password,setPassword] = useState(""); 
-  const [dataRes, setDataRes] = useState(null);
   const [isActive, setIsActive] = useState(false);
   const dispatch = useDispatch();
 
@@ -30,17 +26,12 @@ const LoginForm = () => {
     e.preventDefault();
     setEmail(e.target.value);
 
-    //let isValid = isValidInp;ut(e.target.value)
-    //console.log("valid username === " ,isValid)
-    
-
   }
 
   const onChangePasswordHandler=(e)=>{
     e.preventDefault();
     setPassword(loginForm.current.password.value)
     dispatch(setError(""))
-    //console.log("valid password === " ,isValid)
   
   }
 
@@ -59,7 +50,6 @@ login({email : email ,password: password})
   }
   else{
   localStorage.setItem("authKey",JSON.stringify(response.data))
-  setDataRes(response.data);
   navigate("/dashboard",{ state : response.data})
   }
 

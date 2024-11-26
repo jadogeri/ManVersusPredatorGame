@@ -2,13 +2,11 @@ import React, { useEffect, useRef, useState} from 'react'
 import {useLocation, useNavigate } from 'react-router-dom'
 import InputField from '../../input/FormFieldInput';
 import { useRegisterMutation } from '../../../redux/api/user';
-import { handleNavClickDelay } from "../../../handleNavClickDelay";
 import "./styles.css"
 import {  useDispatch } from "react-redux";
 import { setError } from '../../../redux/feature/session/sessionSlice';
 import { openModal } from '../../../utils/htmlUtil/openModal';
 import RegisterModal from '../../modals/RegisterModal';
-
 
 
 const RegisterForm = () => {
@@ -19,32 +17,9 @@ const RegisterForm = () => {
   const dispatch = useDispatch();
   const registerForm = useRef(null);
 
-  const isValidInput = (input) =>{
-    return input.length > 0;
-  }
-
-  const onChangeEmailHandler=(e)=>{
+  const onChangeResetHandler = (e) =>{
     e.preventDefault();
     dispatch(setError(""))
-    
-
-  }
-  const onChangeUsernameHandler=(e)=>{
-    e.preventDefault();
-    dispatch(setError(""))
-
-  }
-
-  const onChangeNewPasswordHandler=(e)=>{
-    e.preventDefault();
-    dispatch(setError(""))
-    
-  }
-
-  const onChangeConfirmPasswordHandler=(e)=>{
-    e.preventDefault();
-    dispatch(setError(""))
-    
   }
 
   const handleSubmit = (e) =>{
@@ -55,25 +30,17 @@ const RegisterForm = () => {
     const newPassword = registerForm.current?.newPassword?.value;
     const confirmPassword = registerForm.current?.confirmPassword?.value;
     console.log("user == ",username)
-    console.log("email  ==",email)
-    console.log("new == ",newPassword)
-    console.log("confirm ==",confirmPassword)
-
-    //if(!isValidInput(username) || !isValidInput(email) || !isValidInput(newPassword) || !isValidInput(confirmPassword)){
 
     if(newPassword != confirmPassword){
-      alert("passwords do not match")
       dispatch(setError("both passwords do not match"));
 
     }else{
-      alert("call regester endpoint")
 
       register({email : email, username : username , password : newPassword})
       .then((response)=>{
         if(response.error){
 
-          dispatch(setError(response.error.data.message))
-      
+          dispatch(setError(response.error.data.message));      
         }
         else{
           openModal("register");          
@@ -81,12 +48,7 @@ const RegisterForm = () => {
       })
       
     }
-
-  
-    
-
-
-  }
+   }
 
   return (
     <>
@@ -109,19 +71,19 @@ const RegisterForm = () => {
         </p>
       </div>
       <form onSubmit={handleSubmit} ref={registerForm}>
-        <InputField containerClassName="flex items-center space-x-1 bg-gray-200 rounded-lg p-2" required={true} name="username" onChange={onChangeUsernameHandler}
+        <InputField containerClassName="flex items-center space-x-1 bg-gray-200 rounded-lg p-2" required={true} name="username" onChange={onChangeResetHandler}
                     inputClassName="bg-transparent w-full outline-none" type="text" placeholder="username" 
                     iconClassName="fa fa-user fa-lg" />
 
-        <InputField containerClassName="my-4 flex items-center space-x-1 bg-gray-200 rounded-lg p-2" required={true} name="email" onChange={onChangeEmailHandler}
+        <InputField containerClassName="my-4 flex items-center space-x-1 bg-gray-200 rounded-lg p-2" required={true} name="email" onChange={onChangeResetHandler}
                     inputClassName="bg-transparent w-full outline-none" type="email" placeholder="email" 
                     iconClassName="fa fa-envelope fa-sm" />
 
-        <InputField containerClassName="my-4 flex items-center space-x-1 bg-gray-200 rounded-lg p-2" required={true} name="newPassword" onChange={onChangeNewPasswordHandler}
+        <InputField containerClassName="my-4 flex items-center space-x-1 bg-gray-200 rounded-lg p-2" required={true} name="newPassword" onChange={onChangeResetHandler}
                     inputClassName="bg-transparent w-full outline-none" type="password" placeholder="password" 
                     iconClassName="fa fa-lock fa-lg" />
 
-        <InputField containerClassName="my-4 flex items-center space-x-1 bg-gray-200 rounded-lg p-2" required={true} name="confirmPassword" onChange={onChangeConfirmPasswordHandler}
+        <InputField containerClassName="my-4 flex items-center space-x-1 bg-gray-200 rounded-lg p-2" required={true} name="confirmPassword" onChange={onChangeResetHandler}
                     inputClassName="bg-transparent w-full outline-none" type="password" placeholder="confirm password" 
                     iconClassName="fa fa-lock fa-lg" />
 

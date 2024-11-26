@@ -47,7 +47,6 @@ const ForgotPasswordForm = () => {
 
       }
       else{
-       // openModal("forgotpassword")     
 
     forgotPassword({	email})
     .then((response) => {		
@@ -110,79 +109,3 @@ const ForgotPasswordForm = () => {
 };
 
 export default ForgotPasswordForm  
-
-/**
- * 
- * 
- * 
- 
-
-
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const current_password = registerForm.current.current_password.value
-    const new_password = registerForm.current.new_password.value
-    const confirm_password = registerForm.current.confirm_password.value
-    console.log("clicking handle submit reset password")
-   
-
-    if (email.trim().length === 0) {
-      console.log("invalid username")
-       
-        setUsernameNullError(true);
-       // openModal('id01');
-
-    }
-     if(current_password.trim().length === 0){
-      console.log("invalid password")
-
-        setPasswordNullError(true);  
-      
-      //  openModal('id01');
-    }
-    
-    if(new_password.trim().length === 0){
-      console.log("invalid  newPasswordNullError  password")
-
-        setNewPasswordNullError(true);  
-      
-      //  openModal('id01');
-    }
-
-    if(confirm_password.trim().length === 0){
-      console.log("invalid confirmPasswordNullError  password")
-
-        setConfirmPasswordNullError(true);  
-      
-       // openModal('id01');
-    }
-
-  
-    if(new_password !== confirm_password){
-        alert('Passwords did not match!')
-      //  openModal('id01');
-
-    }
-    if(usernameNullError === false && passwordNullError === false && newPasswordNullError === false && confirmPasswordNullError === false 
-       && new_password.length >= 8 && new_password === confirm_password){
-
-    resetPassword({	email : email, new_password,confirm_password})
-    .then((response) => {		
-        console.log(JSON.stringify(response))	
-        const {data} = response
-        console.log(JSON.stringify(data))       
-        alert(JSON.stringify(data))   
-      //  openModal("resetPassword")     
-        //navigate('/signin');
-    })
-.catch((error) =>{  console.log(JSON.stringify("line 67 error: ",error));});               
-
-  }
-
-}
-
-
-
-
- */

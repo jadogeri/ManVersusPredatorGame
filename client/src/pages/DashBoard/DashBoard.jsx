@@ -1,14 +1,11 @@
 import React from 'react'
-import SideBar from '../../layouts/SideBar/SideBar'
-import NavBar from '../../layouts/NavBar/NavBar'
+import SideBar from '../../layouts/SideBar'
+import NavBar from '../../layouts/NavBar'
 import Footer from '../../layouts/Footer'
 import "./styles.css"
 import Credits from '../../views/Credits'
 import Work from '../../views/Work'
 import Pricing from "../../views/Pricing"
-import { w3_open } from '../../utils/htmlUtil/w3_open'
-import { w3_close} from '../../utils/htmlUtil/w3_close'
-import { onClick } from '../../utils/htmlUtil/onClick'
 import Game from '../../views/Game'
 import About from '../../views/About'
 import Team from '../../views/Team'

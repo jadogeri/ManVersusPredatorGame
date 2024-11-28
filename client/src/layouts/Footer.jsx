@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <footer className="w3-center w3-black w3-padding-64">
-    <a href="#home" className="w3-button w3-light-grey">
+    <a href="#myNavbar" className="w3-button w3-light-grey">
       <i className="fa fa-arrow-up w3-margin-right" />
       To the top
     </a>

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import { openTab } from '../utils/htmlUtil/openTab'
-import { w3_open } from '../utils/htmlUtil/w3_open';
+import { openTab } from '../../utils/htmlUtil/openTab'
+import { w3_open } from '../../utils/htmlUtil/w3_open';
 
 
 const NavBar = () => {
@@ -17,24 +17,24 @@ const NavBar = () => {
       <div className="w3-right w3-hide-small tab">
       <a href="#game" className="w3-bar-item w3-button tablinks"
        onClick={(event)=>{openTab(event, 'game'); setIsGame(true)}}>
-          GAME
+         <i className="fa fa-gamepad" /> GAME
         </a>
         <a href="#about" className="w3-bar-item w3-button tablinks"
         onClick={(event)=>{openTab(event, 'about'); setIsGame(false)}}>
-          ABOUT
+           <i className="fa fa-regular fa-exclamation" />ABOUT
         </a>
         <a href="#team" className="w3-bar-item w3-button tablinks"
         onClick={(event)=>{openTab(event, 'team'); setIsGame(false)}}>
           <i className="fa fa-user" /> TEAM
         </a>
-        <button  className="w3-bar-item w3-button tablinks"
-        onClick={(event)=>{openTab(event, 'work1'); setIsGame(false)}}>
+        <a href="#work" className="w3-bar-item w3-button tablinks"
+        onClick={(event)=>{openTab(event, 'work'); setIsGame(false)}}>
           <i className="fa fa-th" /> WORK
-        </button>
-        <button className="w3-bar-item w3-button tablinks"
-        onClick={(event)=>{openTab(event, 'pricing1'); setIsGame(false)}}>
+        </a>
+        <a href="#pricing" className="w3-bar-item w3-button tablinks"
+        onClick={(event)=>{openTab(event, 'pricing'); setIsGame(false)}}>
           <i className="fa fa-usd" /> PRICING
-        </button>
+        </a>
         <a href="#contact" className="w3-bar-item w3-button tablinks"
         onClick={(event)=>{openTab(event, 'contact'); setIsGame(false)}}>
           <i className="fa fa-envelope" /> CONTACT
@@ -42,7 +42,7 @@ const NavBar = () => {
       </div>
       {/* Hide right-floated links on small screens and replace them with a menu icon */}
       <a
-        href="javascript:void(0)"
+        //href="javascript:void(0)"
         className="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
         onClick={()=>{w3_open()}}
       >
@@ -54,3 +54,4 @@ const NavBar = () => {
 }
 
 export default NavBar
+

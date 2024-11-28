@@ -3,5 +3,6 @@
   export function w3_close() {
     const mySidebar = document.getElementById("mySidebar");
 
-      mySidebar.style.display = "none";
+      mySidebar.style.display = "none"
+      console.log(mySidebar)
   }

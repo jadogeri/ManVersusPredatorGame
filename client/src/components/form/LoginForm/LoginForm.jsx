@@ -39,24 +39,18 @@ const LoginForm = () => {
     
     e.preventDefault();  
     const password = loginForm.current?.password?.value;
-    alert("before login...........................")
      
 login({email : email ,password: password})
 
 .then((response)=>{
-  alert("calling loginapi...........................")
-
   if(response.error){
 
     dispatch(setError(response.error.data.message))
 
   }
   else{
-    alert("after login...........................")
-
     console.log("logging in ..............")
     console.log(response.data)
-    alert(JSON.stringify(response.data))
   localStorage.setItem("AUTHKEY",JSON.stringify(response.data))
   console.log("from storage == ",localStorage.getItem("AUTHKEY"))
   navigate("/dashboard",{ state : response.data})

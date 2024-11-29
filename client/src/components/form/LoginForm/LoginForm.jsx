@@ -37,7 +37,7 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     
-    e.preventDefault();  
+   // e.preventDefault();  
     const password = loginForm.current?.password?.value;
      
 login({email : email ,password: password})

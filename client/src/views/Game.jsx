@@ -1,46 +1,62 @@
-import React from 'react'
+import React from "react";
+import "./styles.css";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
-const Game = () => {
-  return (
-    <header className="bgimg w3-display-container w3-grayscale-min tabcontent" id="game"
- 
-    >
-          <img src="https://www.w3schools.com/w3images/mac.jpg" alt="" style={{zIndex :"-1",flex:1}} />
+const Game = (props)  =>{
+    const navigate = useNavigate();
+    return (
+        <div style={{ backgroundColor: 'black', flex: 1 }} id="game">
 
-      <div className="w3-display-left w3-text-white" style={{ padding: 48 }}>
-        <span className="w3-jumbo w3-hide-small">
-          Start something that matters
-        </span>
-        <br />
-        <span className="w3-xxlarge w3-hide-large w3-hide-medium">
-          Start something that matters
-        </span>
-        <br />
-        <span className="w3-large">
-          Stop wasting valuable time with projects that just isn't you.
-        </span>
-        <p>
-          <a
-            href="#about"
-            className="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off"
-          >
-            Learn more and start today
-          </a>
-        </p>
+    <div style={{ flex: 3 }} >
+
+      <p style={  {
+    fontSize: 70,
+    fontStyle: "italic",
+    fontWeight: "bold",
+    textAlign: 'center',
+    textShadowColor: 'green',
+    textShadowRadius: 20
+
+  }} className="text"> MAN </p>
+      <p style={  {
+    fontSize: 70,
+    fontStyle: "italic",
+    fontWeight: "bold",
+    textAlign: 'center',
+  
+
+  }}className="text"> Versus
+      </p>
+      <p style={  {
+    fontSize: 70,
+    fontStyle: "italic",
+    fontWeight: "bold",
+    textAlign: 'center',
+    textShadowColor: 'green',
+    textShadowRadius: 20
+
+  }}className="text"> The Predator
+      </p>
+      <img className="icon"
+        style={{
+          height: 150,
+          marginTop: 30,
+          alignSelf:"center"
+        }}
+        src={require('../assets/villainImages/PredatorHome.jpg')} />
+
+    </div>
+
+    <div className="button"style={{ flex: 1.25, alignItems: 'center' }}>
+      <div onClick={() => { navigate("login") }}>
+        <img src={require('../assets/icons/playnow.jpg')}  style={{height:100,width:200,alignContent:"center",justifyContent:"center",position:""}}/>
       </div>
-      <div
-        className="w3-display-bottomleft w3-text-grey w3-large"
-        style={{ padding: "24px 48px" }}
-      >
-        <i className="fa fa-facebook-official w3-hover-opacity" />
-        <i className="fa fa-instagram w3-hover-opacity" />
-        <i className="fa fa-snapchat w3-hover-opacity" />
-        <i className="fa fa-pinterest-p w3-hover-opacity" />
-        <i className="fa fa-twitter w3-hover-opacity" />
-        <i className="fa fa-linkedin w3-hover-opacity" />
-      </div>
-    </header>
-  )
+    </div>
+
+  </div>
+    )
 }
 
-export default Game
+
+export default Game;

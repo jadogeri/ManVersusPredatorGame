@@ -1,12 +1,17 @@
 import React from 'react'
+import ScrollToTop from "react-scroll-to-top";
+
 
 const Footer = () => {
   return (
-    <footer className="w3-center w3-black w3-padding-64">
-    <a href="#myNavbar" className="w3-button w3-light-grey">
+    <footer className="w3-center w3-black w3-padding-20" >
+    {/* <a  className="w3-button w3-light-grey">
       <i className="fa fa-arrow-up w3-margin-right" />
       To the top
-    </a>
+    </a> */}
+    <ScrollToTop smooth className="w3-button w3-light-green flex" title='To the top' style={{width:75,height:40,color:"green"}}>
+ 
+    </ScrollToTop>
     <div className="w3-xlarge w3-section">
       <i className="fa fa-facebook-official w3-hover-opacity" />
       <i className="fa fa-instagram w3-hover-opacity" />

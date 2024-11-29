@@ -20,7 +20,7 @@ const SideBar = () => {
       onClick={()=>{w3_close()
 
       }}
-      className="w3-bar-item w3-button w3-large w3-padding-16"
+      className="w3-bar-item w3-button w3-large w3-padding-16 "
     >
       Close ×
     </a>

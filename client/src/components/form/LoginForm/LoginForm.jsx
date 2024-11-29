@@ -42,9 +42,9 @@ const LoginForm = () => {
     alert("before login...........................")
      
 login({email : email ,password: password})
-alert("calling loginapi...........................")
 
 .then((response)=>{
+  alert("calling loginapi...........................")
 
   if(response.error){
 

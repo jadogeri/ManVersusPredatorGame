@@ -49,7 +49,12 @@ login({email : email ,password: password})
       age : 41
     }
 
-    alert("test in login form === ",test)
+    alert("response error ................. === ")
+    alert(response)
+    alert("response error stringify................. === ")
+
+    alert(JSON.stringify(response))
+
 
     alert("error in login form (response.error=== ",(response.error))
     alert("error in login form (response.error.data=== ",(response.error.data))

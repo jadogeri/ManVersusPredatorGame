@@ -67,10 +67,6 @@ login({email : email ,password: password})
   else{
 
     alert("login form === ",JSON.stringify(response.data))
-    alert("login form  response.error.data === ",JSON.stringify(response.error.data))
-    alert("login form response.error.message === ",JSON.stringify(response.error.message))
-    alert("login form response.error.data.message=== ",JSON.stringify(response.error.data.message))
-
     console.log("logging in ..............")
     console.log(response.data)
   localStorage.setItem("AUTHKEY",JSON.stringify(response.data))

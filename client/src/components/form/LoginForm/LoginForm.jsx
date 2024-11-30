@@ -36,7 +36,7 @@ const LoginForm = () => {
   }
 
   const handleSubmit = (e) => {
-    
+    try{
     e.preventDefault();  
     const password = loginForm.current?.password?.value;
      
@@ -46,11 +46,20 @@ login({email : email ,password: password})
   if(response.error){
 
     alert("error in login form === ",JSON.stringify(response.error))
+    alert("error in login form === ",JSON.stringify(response.error.data))
+    alert("error in login form === ",JSON.stringify(response.error.message))
+    alert("error in login form === ",JSON.stringify(response.error.data.message))
+
+
+
     dispatch(setError(response.error.data.message))
 
   }
   else{
     alert("no error login form === ",JSON.stringify(response.data))
+    alert("error in login form === ",JSON.stringify(response.error.data))
+    alert("error in login form === ",JSON.stringify(response.error.message))
+    alert("error in login form === ",JSON.stringify(response.error.data.message))
 
     console.log("logging in ..............")
     console.log(response.data)
@@ -63,6 +72,11 @@ login({email : email ,password: password})
 .catch((response)=>{
   alert("error in catch === ",JSON.stringify(response))
 })
+    }catch(e){
+      alert("error in login form === ",JSON.stringify(e))
+    alert("error in login form === ",JSON.stringify(e))
+    alert("error in login form === ",JSON.stringify(e))
+    }
 
 }
     return (

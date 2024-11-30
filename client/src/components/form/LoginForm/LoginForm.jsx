@@ -45,6 +45,8 @@ login({email : email ,password: password})
 .then((response)=>{
   if(response.error){
 
+    alert("error response  in login form === ",JSON.stringify(response))
+
     alert("error in login form === ",JSON.stringify(response.error))
     alert("error in login form === ",JSON.stringify(response.error.data))
     alert("error in login form === ",JSON.stringify(response.error.message))
@@ -56,6 +58,7 @@ login({email : email ,password: password})
 
   }
   else{
+
     alert("no error login form === ",JSON.stringify(response.data))
     alert("error in login form === ",JSON.stringify(response.error.data))
     alert("error in login form === ",JSON.stringify(response.error.message))
@@ -73,6 +76,8 @@ login({email : email ,password: password})
   alert("error in catch === ",JSON.stringify(response))
 })
     }catch(e){
+      alert("e in catch === ",JSON.stringify(e))
+
       alert("error in login form === ",JSON.stringify(e))
     alert("error in login form === ",JSON.stringify(e))
     alert("error in login form === ",JSON.stringify(e))

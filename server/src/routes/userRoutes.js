@@ -8,11 +8,14 @@ const {registerUser,
       logoutUser, 
       deactivateUser, 
       forgotUser, 
+      contactUser,
       resetUser} = require("../controllers/userController/index");
 
 router.post("/register",registerUser);
 
 router.post("/login",loginUser);
+
+router.post("/contact",contactUser);
 
 router.delete("/logout",validateTokenBody,logoutUser);
 

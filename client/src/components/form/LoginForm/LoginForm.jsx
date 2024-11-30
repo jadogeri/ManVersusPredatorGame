@@ -44,11 +44,7 @@ login({email : email ,password: password})
 
 .then((response)=>{
   if(response.error){
-    let test ={
-      name :"joseph",
-      age : 41
-    }
-
+ 
     alert("response error ................. === ")
     alert(response)
     alert("response error stringify................. === ")

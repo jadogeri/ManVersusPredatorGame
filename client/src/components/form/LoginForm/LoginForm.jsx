@@ -56,7 +56,9 @@ login({email : email ,password: password})
     alert("error in login form (response.error.data=== ",(response.error.data))
     
     if(response.error){
+      //dispatch(setError(response.error.data.message))
       dispatch(setError(JSON.stringify(response)))
+
 
     }else{
 

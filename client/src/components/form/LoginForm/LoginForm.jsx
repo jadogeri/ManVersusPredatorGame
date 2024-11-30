@@ -52,7 +52,7 @@ login({email : email ,password: password})
     alert(JSON.stringify(response))
 
 
-    alert("error in login form (response.error=== ",(response.error))
+    alert("error status login form (response.error=== ",(response.error.status))
     alert("error in login form (response.error.data=== ",(response.error.data))
     
 

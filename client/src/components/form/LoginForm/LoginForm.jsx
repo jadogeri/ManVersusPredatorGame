@@ -51,11 +51,9 @@ login({email : email ,password: password})
 
     alert("test in login form === ",test)
 
-    alert("error in login form === ",(response.error))
-    alert("error in login form === ",(response.error.data))
-    alert("error in login form === ",JSON.stringify(response.error.message))
-    alert("error in login form === ",JSON.stringify(response.error.data.message))
-
+    alert("error in login form (response.error=== ",(response.error))
+    alert("error in login form (response.error.data=== ",(response.error.data))
+    
 
 
     dispatch(setError(response.error.data.message))
@@ -63,10 +61,10 @@ login({email : email ,password: password})
   }
   else{
 
-    alert("no error login form === ",JSON.stringify(response.data))
-    alert("error in login form === ",JSON.stringify(response.error.data))
-    alert("error in login form === ",JSON.stringify(response.error.message))
-    alert("error in login form === ",JSON.stringify(response.error.data.message))
+    alert("login form === ",JSON.stringify(response.data))
+    alert("login form  response.error.data === ",JSON.stringify(response.error.data))
+    alert("login form response.error.message === ",JSON.stringify(response.error.message))
+    alert("login form response.error.data.message=== ",JSON.stringify(response.error.data.message))
 
     console.log("logging in ..............")
     console.log(response.data)
@@ -77,6 +75,8 @@ login({email : email ,password: password})
 
 })
 .catch((response)=>{
+  alert(".catch ...............................................")
+
   alert((response))
   alert(JSON.stringify(response))
 

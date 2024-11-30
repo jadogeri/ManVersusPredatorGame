@@ -36,7 +36,7 @@ const LoginForm = () => {
   }
 
   const handleSubmit = (e) => {
-    try{
+
     e.preventDefault();  
     const password = loginForm.current?.password?.value;
      
@@ -49,7 +49,7 @@ login({email : email ,password: password})
       age : 41
     }
 
-    alert("error response  in login form === ",(test))
+    alert("test in login form === ",test)
 
     alert("error in login form === ",(response.error))
     alert("error in login form === ",(response.error.data))
@@ -77,15 +77,11 @@ login({email : email ,password: password})
 
 })
 .catch((response)=>{
-  alert("error in catch === ",JSON.stringify(response))
-})
-    }catch(e){
-      alert("e in catch === ",JSON.stringify(e))
+  alert((response))
+  alert(JSON.stringify(response))
 
-      alert("error in login form === ",JSON.stringify(e))
-    alert("error in login form === ",JSON.stringify(e))
-    alert("error in login form === ",JSON.stringify(e))
-    }
+})
+
 
 }
     return (

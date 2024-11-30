@@ -44,18 +44,9 @@ login({email : email ,password: password})
 
 .then((response)=>{
   if(response.error){
- 
-    alert("response error ................. === ")
-    alert(response)
+
     console.log(response)
     console.log(JSON.stringify(response))
-    alert("response error stringify................. === ")
-
-    alert(JSON.stringify(response))
-
-
-    alert("error status login form (response.error=== ",(response.error.status))
-    alert("error in login form (response.error.data=== ",(response.error.data))
     
     if(response.error){
       console.log(response.error)
@@ -74,7 +65,6 @@ login({email : email ,password: password})
   }
   else{
 
-    alert("login form === ",JSON.stringify(response.data))
     console.log("logging in ..............")
     console.log(response.data)
   localStorage.setItem("AUTHKEY",JSON.stringify(response.data))
@@ -84,11 +74,9 @@ login({email : email ,password: password})
 
 })
 .catch((response)=>{
-  alert(".catch ...............................................")
   console.log(response)
   console.log(JSON.stringify(response))
-  alert((response))
-  alert(JSON.stringify(response))
+
 
 })
 

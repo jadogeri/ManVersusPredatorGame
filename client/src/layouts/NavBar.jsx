@@ -1,9 +1,14 @@
 import React from 'react'
 import { openTab } from '../utils/htmlUtil/openTab'
 import { w3_open } from '../utils/htmlUtil/w3_open';
+import { useLogoutMutation } from '../redux/api/user'
+import { useNavigate } from 'react-router-dom'
 
 
 const NavBar = () => {
+  const [logout] = useLogoutMutation();
+  const auth = JSON.parse(localStorage.getItem("AUTHKEY"));
+  const navigate = useNavigate();
   return (
     <div style={{backgroundColor :"black"}} >
     <div className="w3-top" style={{backgroundColor :"black"}}>
@@ -26,22 +31,36 @@ const NavBar = () => {
         onClick={(event)=>{openTab(event, 'about');}}>
            <i className="fa fa-regular fa-exclamation" style={{backgroundColor :"green"}}/>ABOUT
         </a>
-        <a href="#team" className="w3-bar-item w3-button tablinks" style={{backgroundColor :"green"}}
-        onClick={(event)=>{openTab(event, 'team');}}>
-          <i className="fa fa-user" style={{backgroundColor :"green"}}/> TEAM
-        </a>
-        <a href="#work" className="w3-bar-item w3-button tablinks" style={{backgroundColor :"green"}}
-        onClick={(event)=>{openTab(event, 'work');}}>
-          <i className="fa fa-th" style={{backgroundColor :"green"}}/> WORK
-        </a>
-        <a href="#pricing" className="w3-bar-item w3-button tablinks" style={{backgroundColor :"green"}}
-        onClick={(event)=>{openTab(event, 'pricing');}}>
-          <i className="fa fa-usd" style={{backgroundColor :"green"}}/> PRICING
+
+        <a href="#credits" className="w3-bar-item w3-button tablinks" style={{backgroundColor :"green"}}
+        onClick={(event)=>{openTab(event, 'credits');}}>
+          <i className="fa fa-th" style={{backgroundColor :"green"}}/> CREDITS
         </a>
         <a href="#contact" className="w3-bar-item w3-button tablinks" style={{backgroundColor :"green"}}
         onClick={(event)=>{openTab(event, 'contact');}}>
           <i className="fa fa-envelope" style={{backgroundColor :"green"}} /> CONTACT
         </a>
+        <a href="#team" className="w3-bar-item w3-button tablinks" style={{backgroundColor :"blue"}}
+        onClick={(event)=>{openTab(event, 'team');}}>
+          <i className="fa fa-user" style={{paddingLeft: 10}}/> {auth?.username?.substring(0,1) }
+        </a>
+        <a onClick={()=>{
+      logout({token : auth.token })
+      .then((response)=>{
+        if(response.error){
+          localStorage.removeItem("AUTHKEY")
+          navigate("/login");
+
+        }else{
+          localStorage.removeItem("AUTHKEY")
+          navigate("/login");
+
+        }
+      })
+      
+    }}  className="w3-bar-item w3-button" style={{backgroundColor:"gray"}}>
+      LOGOUT 
+    </a>
       </div>
       {/* Hide right-floated links on small screens and replace them with a menu icon */}
       <a

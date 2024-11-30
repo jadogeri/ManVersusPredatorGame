@@ -37,13 +37,9 @@ const SideBar = () => {
        openTab(event, 'team');}}  className="w3-bar-item w3-button tablinks">
       TEAM
     </a>
-    <a href="#work" onClick={(event)=>{//w3_close(); 
-       openTab(event, 'work');}}  className="w3-bar-item w3-button tablinks">
-      WORK
-    </a>
-    <a href="#pricing" onClick={(event)=>{//w3_close();  
-      openTab(event, 'pricing');}}  className="w3-bar-item w3-button tablinks">
-      PRICING
+    <a href="#credits" onClick={(event)=>{//w3_close();  
+      openTab(event, 'credits');}}  className="w3-bar-item w3-button tablinks">
+      CREDITS
     </a>
     <a href="#contact" onClick={(event)=>{//w3_close(); 
        openTab(event, 'contact');}}  className="w3-bar-item w3-button tablinks">
@@ -53,9 +49,11 @@ const SideBar = () => {
       logout({token : auth.token })
       .then((response)=>{
         if(response.error){
-          alert(JSON.stringify(response))
+          localStorage.removeItem("AUTHKEY")
+          navigate("/login");
+
         }else{
-          localStorage.clear();
+          localStorage.removeItem("AUTHKEY")
           navigate("/login");
 
         }

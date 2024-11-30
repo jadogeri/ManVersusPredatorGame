@@ -4,8 +4,6 @@ import NavBar from '../../layouts/NavBar'
 import Footer from '../../layouts/Footer'
 import "./styles.css"
 import Credits from '../../views/Credits'
-import Work from '../../views/Work'
-import Pricing from "../../views/Pricing"
 import Game from '../../views/Game'
 import About from '../../views/About'
 import Team from '../../views/Team'
@@ -86,8 +84,7 @@ const DashBoard = () => {
         Meetings
       </div>
     </div> */}
-    {/* Work Section */}
-    <Work />
+ 
     {/* Modal for full size images on click*/}
 
     {/* Skills Section */}
@@ -148,8 +145,8 @@ const DashBoard = () => {
         </div>
       </div>
     </div> */}
-    {/* Pricing Section */}
-    <Pricing />
+    {/* Credits Section */}
+    <Credits />
     {/* Contact Section */}
     <Contact />
     {/* Footer */}

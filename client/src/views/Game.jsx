@@ -6,7 +6,9 @@ import { motion } from "framer-motion";
 const Game = (props)  =>{
     const navigate = useNavigate();
     return (
-        <div style={{ backgroundColor: 'black', flex: 1 }} id="game">
+        <div style={{ backgroundColor: 'black', flex: 1,display:"block" }} id="game"
+         className="w3-container tabcontent"
+        >
 
     <div style={{ flex: 3 }} >
 

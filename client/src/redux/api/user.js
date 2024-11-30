@@ -24,6 +24,13 @@ export const userApiSlice = apiSlice.injectEndpoints({
             body: { email : email, password : password},
         })
     }),
+    contact : builder.mutation({
+        query: ({ email, name, subject , message}) => ({
+            url: "/user/contact",
+            method: "POST",
+            body: { email : email, name: name, subject: subject, message: message},
+        })
+    }),
 
     register: builder.mutation({
       query: ({ username ,password, email}) => ({
@@ -58,6 +65,7 @@ export const {
     useDeactivateMutation,
     useLoginMutation,
     useLogoutMutation,
+    useContactMutation,
     useForgotPasswordMutation,
     useResetPasswordMutation,  
 

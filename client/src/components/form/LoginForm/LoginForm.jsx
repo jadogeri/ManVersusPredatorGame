@@ -48,20 +48,10 @@ login({email : email ,password: password})
     console.log(response)
     console.log(JSON.stringify(response))
     
-    if(response.error){
-      console.log(response.error)
+  
+    console.log(response.error)
     console.log(JSON.stringify(response.error))
-      //dispatch(setError(response.error.data.message))
-      dispatch(setError(JSON.stringify(response)))
-
-
-    }else{
-
-      dispatch(setError("failed to dispatch"))
-
-    }
-
-
+    dispatch(setError(response.error.data.message))
   }
   else{
 

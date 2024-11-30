@@ -45,10 +45,13 @@ login({email : email ,password: password})
 .then((response)=>{
   if(response.error){
 
+    alert("error in login form === ",JSON.stringify(response.error))
     dispatch(setError(response.error.data.message))
 
   }
   else{
+    alert("no error login form === ",JSON.stringify(response.data))
+
     console.log("logging in ..............")
     console.log(response.data)
   localStorage.setItem("AUTHKEY",JSON.stringify(response.data))
@@ -56,6 +59,9 @@ login({email : email ,password: password})
   navigate("/dashboard",{ state : response.data})
   }
 
+})
+.catch((response)=>{
+  alert("error in catch === ",JSON.stringify(response))
 })
 
 }

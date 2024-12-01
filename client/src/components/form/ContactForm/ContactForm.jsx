@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState} from 'react'
-import {useLocation, useNavigate } from 'react-router-dom'
+import React, {  useRef, useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 import FormFieldInput from '../../input/FormFieldInput';
 import { useContactMutation } from '../../../redux/api/user'
 import { handleNavClickDelay } from "../../../handleNavClickDelay";
@@ -9,8 +9,9 @@ import { setError } from '../../../redux/feature/session/sessionSlice';
 import FormFieldArea from '../../input/FormFieldArea';
 
 const ContactForm = () => {
+  const auth = JSON.parse(localStorage.getItem("AUTHKEY"))
 
-  const location = useLocation();
+  const [ email, setEmail] = useState(auth?auth.email : "");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -39,10 +40,17 @@ const ContactForm = () => {
 
   }
 
+  const onChangeEmailHandler=(e)=>{
+    e.preventDefault();
+  
+    setEmail(e.target.value);
+    dispatch(setError(""));
+
+  }
+
    const handleSubmit = (e) => {
 
     e.preventDefault();  
-    const email = contactForm.current?.email?.value;
     const name = contactForm.current?.name?.value
     const subject = contactForm.current?.subject?.value
     const message = contactForm.current?.message?.value
@@ -104,8 +112,8 @@ contact({ email : email, name: name, subject: subject, message: message})
                   inputClassName="bg-transparent w-full outline-none" type="text" placeholder="Name" onChange={onChangeHandler}
                   iconClassName="fa fa-user fa-md" />
 
-        <FormFieldInput containerClassName="my-4 flex items-center space-x-1 bg-gray-200 rounded-lg p-2" required={true} name="email"
-                  inputClassName="bg-transparent w-full outline-none" type="email" placeholder="Email" onChange={onChangeHandler}
+        <FormFieldInput containerClassName="my-4 flex items-center space-x-1 bg-gray-200 rounded-lg p-2" required={true} value={email}
+                  inputClassName="bg-transparent w-full outline-none" type="email" placeholder="Email" onChange={onChangeEmailHandler}
                   iconClassName="fa fa-envelope fa-md" />
 
       <FormFieldInput containerClassName="my-4 flex items-center space-x-1 bg-gray-200 rounded-lg p-2" name="subject"

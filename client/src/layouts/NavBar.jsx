@@ -1,6 +1,7 @@
 import React from 'react'
 import { openTab } from '../utils/htmlUtil/openTab'
 import { w3_open } from '../utils/htmlUtil/w3_open';
+import { closeAllViews } from '../utils/htmlUtil/closeAllViews';
 import { useLogoutMutation } from '../redux/api/user'
 import { useNavigate } from 'react-router-dom'
 
@@ -24,24 +25,24 @@ const NavBar = () => {
       {/* Right-sided navbar links */}
       <div className="w3-right w3-hide-small tab" style={{backgroundColor :"black"}}>
       <a href="#game" className="w3-bar-item w3-button tablinks" style={{backgroundColor :"green"}}
-       onClick={(event)=>{openTab(event, 'game'); }}>
+       onClick={(event)=>{openTab(event, 'game') }}>
          <i className="fa fa-gamepad" style={{backgroundColor :"green"}}/> GAME
         </a>
         <a href="#about" className="w3-bar-item w3-button tablinks" style={{backgroundColor :"green"}}
-        onClick={(event)=>{openTab(event, 'about');}}>
+        onClick={(event)=>{openTab(event, 'about');closeAllViews();}}>
            <i className="fa fa-regular fa-exclamation" style={{backgroundColor :"green"}}/>ABOUT
         </a>
 
         <a href="#credits" className="w3-bar-item w3-button tablinks" style={{backgroundColor :"green"}}
-        onClick={(event)=>{openTab(event, 'credits');}}>
+        onClick={(event)=>{openTab(event, 'credits');closeAllViews();}}>
           <i className="fa fa-th" style={{backgroundColor :"green"}}/> CREDITS
         </a>
         <a href="#contact" className="w3-bar-item w3-button tablinks" style={{backgroundColor :"green"}}
-        onClick={(event)=>{openTab(event, 'contact');}}>
+        onClick={(event)=>{openTab(event, 'contact');closeAllViews();}}>
           <i className="fa fa-envelope" style={{backgroundColor :"green"}} /> CONTACT
         </a>
         <a href="#team" className="w3-bar-item w3-button tablinks" style={{backgroundColor :"blue"}}
-        onClick={(event)=>{openTab(event, 'team');}}>
+        onClick={(event)=>{openTab(event, 'team');closeAllViews();}}>
           <i className="fa fa-user" style={{paddingLeft: 10}}/> {auth?.username?.substring(0,1) }
         </a>
         <a onClick={()=>{

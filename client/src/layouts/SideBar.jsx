@@ -4,6 +4,8 @@ import { useLogoutMutation } from '../redux/api/user'
 import { useNavigate } from 'react-router-dom'
 import { openTab } from '../utils/htmlUtil/openTab'
 import { w3_open } from '../utils/htmlUtil/w3_open';
+import { closeAllViews } from '../utils/htmlUtil/closeAllViews'
+import { openGameView } from '../utils/htmlUtil/openGameView'
 
 const SideBar = () => {
   const [logout] = useLogoutMutation();
@@ -30,19 +32,19 @@ const SideBar = () => {
     </a>
 
     <a href="#about"   onClick={(event)=>{//w3_close(); 
-       openTab(event, 'about');}}  className="w3-bar-item w3-button tablinks">
+       openTab(event, 'about');closeAllViews();}}  className="w3-bar-item w3-button tablinks">
       ABOUT 
     </a>
     <a href="#team" onClick={(event)=>{//w3_close(); 
-       openTab(event, 'team');}}  className="w3-bar-item w3-button tablinks">
+       openTab(event, 'team');closeAllViews();}}  className="w3-bar-item w3-button tablinks">
       TEAM
     </a>
     <a href="#credits" onClick={(event)=>{//w3_close();  
-      openTab(event, 'credits');}}  className="w3-bar-item w3-button tablinks">
+      openTab(event, 'credits');closeAllViews();}}  className="w3-bar-item w3-button tablinks">
       CREDITS
     </a>
     <a href="#contact" onClick={(event)=>{//w3_close(); 
-       openTab(event, 'contact');}}  className="w3-bar-item w3-button tablinks">
+       openTab(event, 'contact');closeAllViews();}}  className="w3-bar-item w3-button tablinks">
       CONTACT 
     </a>
     <a onClick={()=>{

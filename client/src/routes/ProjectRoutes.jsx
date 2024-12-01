@@ -27,7 +27,10 @@ const ProjectRoutes = () => {
 			<Route path="/register" element={auth ? <Navigate to="/dashboard" /> :<Register />} /> 
 			<Route path="/test" element={<TestPage />} /> 		
     		<Route element={<PrivateRoutes />}>
-                <Route path="/dashboard" element={<DashBoard />  } />
+            <Route path="/dashboard" element={<DashBoard />  } />
+  
+
+
     		</Route>
 			<Route path="*" element={<NoPage />} />
 		</Routes>

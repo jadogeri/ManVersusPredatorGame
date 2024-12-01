@@ -8,6 +8,9 @@ import Game from '../../views/Game'
 import About from '../../views/About'
 import Team from '../../views/Team'
 import Contact from '../../views/Contact'
+import Difficulty from '../../views/Difficulty'
+import Stage from '../../views/Stage'
+import Character from '../../views/Character'
 
 const DashBoard = () => {
   return (
@@ -29,6 +32,10 @@ const DashBoard = () => {
     <SideBar />
     {/* Header with full-height image */}
     <Game />
+    <Difficulty/>
+    <Character/>
+    <Stage/>
+   
     {/* About Section */}
     <About />
     {/* Promo Section - "We know design" */}

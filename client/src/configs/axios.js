@@ -12,7 +12,7 @@ const headers ={
 const api =  axios.create({
       
     //baseURL: baseURL ,
-    baseURL : process.env.REACT_APP_BASE_URL,
+    baseURL :  "https://manversuspredatorgame.onrender.com/api",
     headers: headers
   
 })

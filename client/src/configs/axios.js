@@ -1,8 +1,7 @@
 import axios from "axios";
 
 //const baseURL = process.env.BASE_URL;
-//const baseURL = "http://localhost:4000/api/opao"
-//const baseURL = "http://127.0.0.1:4000/api"
+const baseURL = "https://manversuspredatorgame.onrender.com/api"
 
 
 const headers ={
@@ -13,8 +12,8 @@ const headers ={
 
 const api =  axios.create({
       
-    //baseURL: baseURL ,
-    baseURL : process.env.BASE_URL,
+    baseURL: baseURL ,
+    //baseURL : process.env.BASE_URL,
     headers: headers
   
 })

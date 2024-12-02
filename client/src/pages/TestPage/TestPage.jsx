@@ -9,7 +9,7 @@ const Home = (props)  =>{
     const navigate = useNavigate();
 
     const getData = async () =>{
-       await api.get("./test/hello/")
+       await api.get("./test/hello")
       .then(response => {
         // Handle successful response
         console.log(response.data);

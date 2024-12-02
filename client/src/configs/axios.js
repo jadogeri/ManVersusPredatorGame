@@ -12,7 +12,7 @@ const headers ={
 const api =  axios.create({
       
     //baseURL: baseURL ,
-    baseURL : process.env.BASE_URL,
+    baseURL : process.env.REACT_APP_BASE_URL,
     headers: headers
   
 })

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-//const baseURL = process.env.BASE_URL;
+const baseURL = process.env.REACT_APP_BASE_URL;
 
 
 const headers ={
@@ -11,8 +11,7 @@ const headers ={
 
 const api =  axios.create({
       
-    //baseURL: baseURL ,
-    baseURL :  "https://manversuspredatorgame.onrender.com/api",
+    baseURL: baseURL ,
     headers: headers
   
 })

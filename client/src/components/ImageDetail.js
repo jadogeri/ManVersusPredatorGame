@@ -4,10 +4,12 @@ const ImageDetail = (props) =>{
 
     console.log(props);
 
-    return  <div style={{flex:2,flexDirection:"row", alignItems:'center'}}>
-            <div onClick={props.levelHandler}>                 
+    return  <><div //style={{flex:2,flexDirection:"row", alignItems:'center'}}
+     className="w3-bar-item">
+            <div  >                 
 
-                <img style = {imageStyle.style} src={props.imageSource} />
+                <img style = {imageStyle.style} src={props.imageSource} onClick={props.levelHandler} />
+                
                                
             </div> 
 
@@ -15,8 +17,13 @@ const ImageDetail = (props) =>{
 
 
             </div>
+            <div className="w3-quarter">
+        <i className="fa fa-heart w3-margin-bottom w3-jumbo" />
+        <img className={props.className}style = {imageStyle.style} src={props.imageSource} onClick={props.levelHandler} />
 
-                
+      </div>
+
+            </>    
            
 };
 
@@ -35,6 +42,7 @@ const style1 = {
 const imageStyle = {
 
     style:{       
+       cursor:"pointer",
 
     }
 };

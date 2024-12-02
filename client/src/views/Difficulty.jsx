@@ -19,6 +19,8 @@ const Difficulty = (props)  =>{
   }
 
     return (
+      <>
+      {/**
         <div style={{ backgroundColor: 'black', flex: 1 }} id="difficulty"
          className="w3-container tabcontent"
         >
@@ -36,17 +38,20 @@ const Difficulty = (props)  =>{
   }} className="text"> GAME DIFFICULTY </p>
     
       <p style={  {
-    fontSize: 70,
+    //fontSize: 70,
     fontStyle: "italic",
     fontWeight: "bold",
     textAlign: 'center',
     textShadowColor: 'green',
     textShadowRadius: 20
 
-  }}className="text"> 
-    <ImageDetail points={gameLevel.easy} imageSource={require('../assets/icons/easy.png')} levelHandler={() => { setDifficulty({ value: gameLevel.easy }) }}/>
-      <ImageDetail points={gameLevel.medium} imageSource={require('../assets/icons/medium.png')} levelHandler={() => { setDifficulty({ value: gameLevel.medium }) }}/>
-      <ImageDetail points={gameLevel.hard} imageSource={require('../assets/icons/hard.png')} levelHandler={() => { setDifficulty({ value: gameLevel.hard }) }}/>
+  }}className="w3-row-padding w3-center text" > 
+    <ImageDetail points={gameLevel.easy} className="w3-margin-bottom w3-jumbo"
+    imageSource={require('../assets/icons/easy.png')} levelHandler={() => { setDifficulty({ value: gameLevel.easy }) }}/>
+      <ImageDetail points={gameLevel.medium} className="w3-margin-bottom w3-jumbo"
+       imageSource={require('../assets/icons/medium.png')} levelHandler={() => { setDifficulty({ value: gameLevel.medium }) }}/>
+      <ImageDetail points={gameLevel.hard} className="w3-margin-bottom w3-jumbo"
+      imageSource={require('../assets/icons/hard.png')} levelHandler={() => { setDifficulty({ value: gameLevel.hard }) }}/>
 
       </p>
     
@@ -71,83 +76,51 @@ const Difficulty = (props)  =>{
     </div>
 
   </div>
+
+*/}
+
+  <div className="w3-container w3-center " style={{ padding: "128px 16px" }} id="difficulty">
+    <h3 className="w3-center">ABOUT THE COMPANY</h3>
+    <p className="w3-center w3-large">Key features of our company</p>
+    
+    <div style={{alignItems:"center",alignContent:"center",justifyItems:"center",display:"flex",justifyContent:"space-between"}}>
+    <div className="w3-center" 
+    style={{ marginTop: 64,justifyContent:"space-between",height:500,backgroundColor:"red",
+             
+     }}>
+      <div className="w3-quarter">
+        <i className="fa fa-desktop w3-margin-bottom w3-jumbo w3-center" />
+        <p className="w3-large">Responsive</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore.
+        </p>
+      </div>
+      <div className="w3-quarter">
+        <i className="fa fa-heart w3-margin-bottom w3-jumbo" />
+        <p className="w3-large">Passion</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore.
+        </p>
+      </div>
+      <div className="w3-quarter">
+        <i className="fa fa-diamond w3-margin-bottom w3-jumbo" />
+        <p className="w3-large">Design</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore.
+        </p>
+      </div>
+ 
+    </div>
+    </div>
+  </div>
+  </>
     )
 }
 
 
 export default Difficulty;
 
-/**
- * 
- * 
- * 
-import React, { useState } from "react";
-import { View, Text, Button, TextInput, StyleSheet, TouchableOpacity } from "react-native";
-import ImageDetail from "../components/ImageDetail";
 
-const GameDifficultyScreen = function (props) {
-
-    const EASY = 250;
-    const MEDIUM = 200;
-    const HARD = 150;
-
-    const gameLevel = {
-        easy: EASY,
-        medium: MEDIUM,
-        hard: HARD
-    }
-
-    const [level, setDifficulty] = useState({ value: 0 })
-
-    return <View style={{ backgroundColor: 'yellow', flex: 1 }}>
-
-        <View style={{ backgroundColor: 'black', flex: 1, alignItems: 'center' }} >
-
-            <Text style={style.text}> GAME DIFFICULTY</Text>
-
-            <ImageDetail points={gameLevel.easy} imageSource={require('../../assets/icons/easy.png')} levelHandler={() => { setDifficulty({ value: gameLevel.easy }) }} />
-            <ImageDetail points={gameLevel.medium} imageSource={require('../../assets/icons/medium.png')} levelHandler={() => { setDifficulty({ value: gameLevel.medium }) }} />
-            <ImageDetail points={gameLevel.hard} imageSource={require('../../assets/icons/hard.png')} levelHandler={() => { setDifficulty({ value: gameLevel.hard }) }} />
-            <Text style={{ backgroundColor: 'black' }}> {level.value} </Text>
-
-
-            <Button title={level.value === 0 ? "CHOOSE DIFFICULTY" : "ENTER GAME"}
-                onPress={level.value > 0 ? () => { props.navigation.navigate("character", level) } : () => { }} />
-
-
-        </View>
-        <View style={{ flex: 0.10, backgroundColor: 'black' }}>
-
-        </View>
-
-
-    </View>
-
-};
-
-const style = StyleSheet.create({
-
-    text: {
-
-
-        fontSize: 70,
-        fontStyle: "italic",
-        fontWeight: "bold",
-        textAlign: 'center',
-        textShadowColor: 'green',
-        textShadowRadius: 20,
-    }
-});
-
-const image = StyleSheet.create({
-
-    imageStyle: {
-
-        fontStyle: 'italic'
-
-    }
-
-});
-
-export default GameDifficultyScreen;
- */

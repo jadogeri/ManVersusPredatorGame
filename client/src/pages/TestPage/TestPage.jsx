@@ -9,7 +9,7 @@ const Home = (props)  =>{
     const navigate = useNavigate();
 
     const getData = async () =>{
-      const response = await api.get("./test/hello")
+      const response = await api.get("./test/hello/")
       
       setData(JSON.stringify(response))
     }

@@ -56,7 +56,7 @@ const deactivateTest = asyncHandler(async (req, res) => {
       
 });
 
-const testTest = asyncHandler(async (req, res) => {     
+const helloTest = asyncHandler(async (req, res) => {     
        
 
 
@@ -66,4 +66,4 @@ const testTest = asyncHandler(async (req, res) => {
 
 
 
-module.exports = {registerTest, loginTest, logoutTest, deactivateTest, testTest}
+module.exports = {registerTest, loginTest, logoutTest, deactivateTest, helloTest}

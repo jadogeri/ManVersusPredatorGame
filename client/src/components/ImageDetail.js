@@ -23,6 +23,24 @@ const ImageDetail = (props) =>{
 
       </div>
 
+
+
+
+
+
+
+
+
+      {/* <div className="w3-quarter">
+        <ImageDetail points={gameLevel.easy} className="w3-margin-bottom w3-jumbo"
+    imageSource={require('../assets/icons/easy.png')} levelHandler={() => { setDifficulty({ value: gameLevel.easy }) }}/>
+
+        <p className="w3-large">EASY</p>
+        <p>
+          {gameLevel.easy}
+        </p>
+      </div> */}
+
             </>    
            
 };

@@ -11,11 +11,13 @@ const Difficulty = (props)  =>{
   const EASY = 250;
   const MEDIUM = 200;
   const HARD = 150;
+  const EXPERT = 100;
 
   const gameLevel = {
       easy: EASY,
       medium: MEDIUM,
-      hard: HARD
+      hard: HARD,
+      expert : EXPERT
   }
 
     return (
@@ -89,16 +91,25 @@ const Difficulty = (props)  =>{
              
      }}>
       <div className="w3-quarter">
-        <i className="fa fa-desktop w3-margin-bottom w3-jumbo w3-center" />
-        <p className="w3-large">Responsive</p>
+        <ImageDetail points={gameLevel.easy} className="w3-margin-bottom w3-jumbo"
+    imageSource={require('../assets/icons/easy.png')} levelHandler={() => { setDifficulty({ value: gameLevel.easy }) }}/>
+
+        <p className="w3-large">EASY</p>
+        <p>
+          {gameLevel.easy}
+        </p>
+      </div>
+      <div className="w3-quarter">
+        <i className="fa fa-heart w3-margin-bottom w3-jumbo" />
+        <p className="w3-large">Passion</p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore.
         </p>
       </div>
       <div className="w3-quarter">
-        <i className="fa fa-heart w3-margin-bottom w3-jumbo" />
-        <p className="w3-large">Passion</p>
+        <i className="fa fa-diamond w3-margin-bottom w3-jumbo" />
+        <p className="w3-large">Design</p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore.

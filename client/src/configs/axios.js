@@ -2,7 +2,8 @@ import axios from "axios";
 
 //const baseURL = process.env.BASE_URL;
 //const baseURL = "http://localhost:4000/api/opao"
-const baseURL = "http://127.0.0.1:4000/api"
+//const baseURL = "http://127.0.0.1:4000/api"
+const baseURL = "http://192.168.1.82:4000/api"
 
 const headers ={
     'Content-Type': 'application/json',

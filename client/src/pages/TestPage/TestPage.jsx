@@ -9,9 +9,19 @@ const Home = (props)  =>{
     const navigate = useNavigate();
 
     const getData = async () =>{
-      const response = await api.get("./test/hello/")
+       await api.get("./test/hello/")
+      .then(response => {
+        // Handle successful response
+        console.log(response.data);
+        setData(JSON.stringify(response.data))
+      })
+      .catch(error => {
+        // Handle error
+        console.error(error);
+        setData(JSON.stringify(error))
+      });
       
-      setData(JSON.stringify(response))
+      
     }
     return (
         <div style={{ backgroundColor: 'black', flex: 1 }}>

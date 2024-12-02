@@ -36,7 +36,7 @@ const Home = (props)  =>{
     textShadowColor: 'green',
     textShadowRadius: 20
 
-  }}className="text"> DATA === {data}
+  }}className="text">API DATA === {data}
       </p>
       <img className="icon"
         style={{
@@ -49,7 +49,7 @@ const Home = (props)  =>{
     </div>
 
     <div className="button"style={{ flex: 1.25, alignItems: 'center' }}>
-      <div onClick={() => { getData()}}>
+      <div onClick={() => {alert("pressed"); getData()}}>
         <img src={require('../../assets/icons/start.jpg')}  />
       </div>
     </div>

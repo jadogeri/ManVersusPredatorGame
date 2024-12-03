@@ -64,7 +64,7 @@ const Character = (props)  =>{
   let gameString = JSON.stringify(gameData)
   console.log(gameData)
   const [state,dispatch] = useReducer(reducer,{name:"arnold",special:0,strength:0,health:0,
-    totalPoints:gameData.points,MAX:gameData.points});
+    totalPoints:gameData?.points,MAX:gameData?.points});
     console.log(state);
 
   const navigate = useNavigate();

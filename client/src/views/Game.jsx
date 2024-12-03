@@ -66,12 +66,3 @@ const Game = (props)  =>{
 
 export default Game;
 
-/**
- * 
- * 
- * 
-       <a href="#contact" className="w3-bar-item w3-button tablinks" style={{backgroundColor :"green"}}
-        onClick={(event)=>{openTab(event, 'contact');}}>
-          <i className="fa fa-envelope" style={{backgroundColor :"green"}} /> CONTACT
-        </a>
- */

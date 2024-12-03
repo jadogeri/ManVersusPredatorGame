@@ -4,65 +4,16 @@ const ImageDetail = (props) =>{
 
     console.log(props);
 
-    return  <><div //style={{flex:2,flexDirection:"row", alignItems:'center'}}
-     className="w3-bar-item">
-            <div  >                 
-
-                <img style = {imageStyle.style} src={props.imageSource} onClick={props.levelHandler} />
-                
-                               
-            </div> 
-
-            <h4 style={{backgroundColor:'black',color: 'green'}}> {props.points} points</h4>
-
-
+    return  <div className="w3-quarter">
+                <img className="fa w3-margin w3-jumbo w3-center"
+                    
+                    src={props.src} style={{width:"60%",cursor:"pointer"}} onClick={props.onClick}/>    
+                <p style={{color:"yellow"}}>
+                    {props.points} points
+                </p>
             </div>
-            <div className="w3-quarter">
-        <i className="fa fa-heart w3-margin-bottom w3-jumbo" />
-        <img className={props.className}style = {imageStyle.style} src={props.imageSource} onClick={props.levelHandler} />
-
-      </div>
-
-
-
-
-
-
-
-
-
-      {/* <div className="w3-quarter">
-        <ImageDetail points={gameLevel.easy} className="w3-margin-bottom w3-jumbo"
-    imageSource={require('../assets/icons/easy.png')} levelHandler={() => { setDifficulty({ value: gameLevel.easy }) }}/>
-
-        <p className="w3-large">EASY</p>
-        <p>
-          {gameLevel.easy}
-        </p>
-      </div> */}
-
-            </>    
            
 };
 
-const style1 = {
-
-    text: {
-        fontSize: 30,
-        fontStyle:"italic",
-        fontWeight :"bold",
-        textAlign: 'center',
-        textShadowColor : 'white'
-        
-    }
-};
-
-const imageStyle = {
-
-    style:{       
-       cursor:"pointer",
-
-    }
-};
 
 export default ImageDetail;

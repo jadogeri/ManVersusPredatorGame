@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { openTab } from "../utils/htmlUtil/openTab";
 import { motion } from "framer-motion";
 import ImageDetail from "../components/ImageDetail"
+import NavButton from "../components/NavButton"
 
 const Difficulty = (props)  =>{
-  const [level, setDifficulty] = useState({ value: 0 })
+  const [difficulty, setDifficulty] = useState({ value: 0 })
+  const navigate = useNavigate();
 
   const EASY = 250;
   const MEDIUM = 200;
@@ -22,14 +24,9 @@ const Difficulty = (props)  =>{
 
     return (
       <>
-      {/**
-        <div style={{ backgroundColor: 'black', flex: 1 }} id="difficulty"
-         className="w3-container tabcontent"
-        >
-
-    <div style={{ flex: 3 }} >
-
-      <p style={  {
+    
+  <div className="w3-container w3-center tabcontent " style={{ padding: "128px 16px", backgroundColor: 'black' }} id="difficulty">
+    <p style={  {
     fontSize: 70,
     fontStyle: "italic",
     fontWeight: "bold",
@@ -37,95 +34,36 @@ const Difficulty = (props)  =>{
     textShadowColor: 'green',
     textShadowRadius: 20
 
-  }} className="text"> GAME DIFFICULTY </p>
-    
-      <p style={  {
-    //fontSize: 70,
-    fontStyle: "italic",
-    fontWeight: "bold",
-    textAlign: 'center',
-    textShadowColor: 'green',
-    textShadowRadius: 20
-
-  }}className="w3-row-padding w3-center text" > 
-    <ImageDetail points={gameLevel.easy} className="w3-margin-bottom w3-jumbo"
-    imageSource={require('../assets/icons/easy.png')} levelHandler={() => { setDifficulty({ value: gameLevel.easy }) }}/>
-      <ImageDetail points={gameLevel.medium} className="w3-margin-bottom w3-jumbo"
-       imageSource={require('../assets/icons/medium.png')} levelHandler={() => { setDifficulty({ value: gameLevel.medium }) }}/>
-      <ImageDetail points={gameLevel.hard} className="w3-margin-bottom w3-jumbo"
-      imageSource={require('../assets/icons/hard.png')} levelHandler={() => { setDifficulty({ value: gameLevel.hard }) }}/>
-
-      </p>
-    
-
-
-      <img className="icon"
-        style={{
-          height: 150,
-          marginTop: 30,
-          alignSelf:"center"
-        }}
-        src={require('../assets/villainImages/PredatorHome.jpg')} />
-
-    </div>
-
-    <div className="button"style={{ flex: 1.25, alignItems: 'center' }}>
-      <div onClick={(event) => {openTab(event, 'character'); //navigate("login")
-
-       }}>
-        <img src={require('../assets/icons/playnow.jpg')}  style={{height:100,width:200,alignContent:"center",justifyContent:"center",position:""}}/>
-      </div>
-    </div>
-
-  </div>
-
-*/}
-
-  <div className="w3-container w3-center " style={{ padding: "128px 16px" }} id="difficulty">
-    <h3 className="w3-center">ABOUT THE COMPANY</h3>
-    <p className="w3-center w3-large">Key features of our company</p>
+  }} className="text w3-center"> GAME DIFFICULTY </p>
     
     <div style={{alignItems:"center",alignContent:"center",justifyItems:"center",display:"flex",justifyContent:"space-between"}}>
     <div className="w3-center" 
-    style={{ marginTop: 64,justifyContent:"space-between",height:500,backgroundColor:"red",
+    style={{ marginTop: 64,justifyContent:"space-between",backgroundColor:"#00072D",
              
      }}>
-      <div className="w3-quarter">
-        <ImageDetail points={gameLevel.easy} className="w3-margin-bottom w3-jumbo"
-    imageSource={require('../assets/icons/easy.png')} levelHandler={() => { setDifficulty({ value: gameLevel.easy }) }}/>
 
-        <p className="w3-large">EASY</p>
-        <p>
-          {gameLevel.easy}
-        </p>
-      </div>
-      <div className="w3-quarter">
-        <i className="fa fa-heart w3-margin-bottom w3-jumbo" />
-        <p className="w3-large">Passion</p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore.
-        </p>
-      </div>
-      <div className="w3-quarter">
-        <i className="fa fa-diamond w3-margin-bottom w3-jumbo" />
-        <p className="w3-large">Design</p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore.
-        </p>
-      </div>
-      <div className="w3-quarter">
-        <i className="fa fa-diamond w3-margin-bottom w3-jumbo" />
-        <p className="w3-large">Design</p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore.
-        </p>
-      </div>
+     <ImageDetail points={gameLevel.easy} src={require('../assets/icons/easy.png')} onClick={() => { setDifficulty({ value: gameLevel.easy }) }}/>
+     <ImageDetail points={gameLevel.medium} src={require('../assets/icons/medium.png')} onClick={() => { setDifficulty({ value: gameLevel.medium }) }}/>
+     <ImageDetail points={gameLevel.hard} src={require('../assets/icons/hard.png')} onClick={() => { setDifficulty({ value: gameLevel.hard}) }}/>
+     <ImageDetail points={gameLevel.expert} src={require('../assets/icons/expert.png')} onClick={() => { setDifficulty({ value: gameLevel.expert }) }}/>
+
+
  
     </div>
+
+
     </div>
+    {/* <NavButton style={{backgroundColor:"red",width:200,height:50,justifyItems:"center",
+      position:"flex",alignItems:"center",alignContent:"center",justifyItems:"center",
+      cursor:"pointer"}} title="CHOOSE DIFFICULTY" onClick={()=>{alert("pressed")}}/> */}
+    <button style={{backgroundColor:difficulty.value === 0 ?"red":"blue",width:300,height:75,color:"white",
+                cursor: difficulty.value === 0 ? "default" : "pointer"
+    }} 
+        onClick={difficulty.value > 0 ? (event) => {localStorage.setItem("STATE",JSON.stringify({points:difficulty.value}));
+          openTab(event,"character"); } : () => { }} >
+
+{difficulty.value === 0 ? "CHOOSE DIFFICULTY" : "ENTER GAME"}
+                </button>
   </div>
   </>
     )

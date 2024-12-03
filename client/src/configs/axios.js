@@ -1,9 +1,10 @@
 import axios from "axios";
+import baseURL from "./test"
 
-const baseURL = process.env.REACT_APP_BASE_URL;
-console.log(baseURL)
 
-const headers ={
+//const baseURL = process.env.REACT_APP_BASE_URL;
+console.log("baseURL === " , baseURL)
+;const headers ={
     'Content-Type': 'application/json',
     "Accept":'application/json',
     "Access-Control-Allow-Origin": "*"       
